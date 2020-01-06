@@ -1,0 +1,3317 @@
+Code to load variables in library
+
+libname LIB '/home/terrettascott0/sasuser.v94';
+
+filename in1 '/home/terrettascott0/sasuser.v94/SR07Asc.dat';
+
+
+
+proc format; 
+   value $ALLGRAD
+      "0" = "0  NOT ENROLLED"
+      "1" = "1  FIRST GRADE OR EQUIVALENT"
+      "10" = "10 TENTH GRADE OR EQUIVALENT/SOPHOMORE"
+      "11" = "11 ELEVENTH GRADE OR EQUIVALENT/JUNIOR"
+      "12" = "12 TWELFTH GRADE OR EQUIVALENT/SENIOR"
+      "2" = "2  SECOND GRADE OR EQUIVALENT"
+      "3" = "3  THIRD GRADE OR EQUIVALENT"
+      "4" = "4  FOURTH GRADE OR EQUIVALENT"
+      "5" = "5  FIFTH GRADE OR EQUIVALENT"
+      "6" = "6  SIXTH GRADE OR EQUIVALENT"
+      "7" = "7  SEVENTH GRADE OR EQUIVALENT"
+      "8" = "8  EIGHTH GRADE OR EQUIVALENT"
+      "9" = "9  NINTH GRADE OR EQUIVALENT/FRESHMAN"
+      "K" = "K  TRANSITIONAL K/KINDERGARTEN/PREFIRST"
+      "N" = "N  NURSERY/PRESCHOOL/PREKINDERGARTEN/HEAD START"
+      "U" = "U  UNGRADED/NO EQUIVALENT"
+   ;
+   value $GRADE
+      "-7" = "-7 REFUSED"
+      "-8" = "-8 DK"
+      "-9" = "-9 NOT ASCERTAINED"
+      "1" = "1  1ST GR"
+      "10" = "10 10TH GR"
+      "11" = "11 11TH GR"
+      "12" = "12 12TH GR"
+      "13" = "13 ABOVE 12TH GR"
+      "2" = "2  2ND GR"
+      "3" = "3  3RD GR"
+      "4" = "4  4TH GR"
+      "5" = "5  5TH GR"
+      "6" = "6  6TH GR"
+      "7" = "7  7TH GR"
+      "8" = "8  8TH GR"
+      "9" = "9  9TH GR"
+      "K" = "K  KINDERGARTEN"
+      "N" = "N  NRSY/PREK/HD ST"
+      "P" = "P  PRE1ST GR AF K"
+      "S" = "S  SPEC ED"
+      "T" = "T  TRANS K BEF K"
+      "U" = "U  UNGRADED"
+      "-1" = "-1 INAPPLICABLE"
+   ;
+   value $GRADEEQ
+      "-7" = "-7 REFUSED"
+      "-8" = "-8 DK"
+      "-9" = "-9 NOT ASCERTAINED"
+      "1" = "1  1ST GR"
+      "10" = "10 10TH GR"
+      "11" = "11 11TH GR"
+      "12" = "12 12TH GR"
+      "13" = "13 ABOVE 12TH GR"
+      "2" = "2  2ND GR"
+      "3" = "3  3RD GR"
+      "4" = "4  4TH GR"
+      "5" = "5  5TH GR"
+      "6" = "6  6TH GR"
+      "7" = "7  7TH GR"
+      "8" = "8  8TH GR"
+      "9" = "9  9TH GR"
+      "K" = "K  KINDERGARTEN"
+      "N" = "N  NRSY/PREK/HD ST"
+      "P" = "P  PRE1ST GR AF K"
+      "T" = "T  TRANS K BEF K"
+      "U" = "U  UNGRADED"
+      "-1" = "-1 INAPPLICABLE"
+   ;
+   value $PATH
+      "E" = "E  ELEMENTARY SCHOOL"
+      "H" = "H  HOME SCHOOLER"
+      "M" = "M  MIDDLE SCHOOL"
+      "N" = "N  NURSERY SCHOOL"
+      "S" = "S  SENIOR HIGH"
+      "-1" = "-1 INAPPLICABLE"
+   ;
+   value $RSLT
+      "CE" = "CE COMPLETE INTERVIEW ELEM SCHOOL PATH"
+      "CH" = "CH COMPLETE INTERVIEW HOME SCHOOL PATH"
+      "CM" = "CM COMPLETE INTERVIEW MIDDLE SCHOOL PATH"
+      "CN" = "CN COMPLETE INTERVIEW NURSERY SCHOOL PATH"
+      "CS" = "CS COMPLETE INTERVIEW SENIOR HIGH PATH"
+   ;
+   value BORN
+      1 = "1  UNITED STATES"
+      2 = "2  U.S. TERRITORIES"
+      3 = "3  ANOTHER COUNTRY"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value CENREG
+      1 = "1 NORTHEAST"
+      2 = "2 SOUTH"
+      3 = "3 MIDWEST"
+      4 = "4 WEST"
+   ;
+   value CMOVEAGE
+      0-5 = "0-5"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value CRCOMPMM
+      1 = "1  JANUARY"
+      2 = "2  FEBRUARY"
+      3 = "3  MARCH"
+      4 = "4  APRIL"
+      5 = "5  MAY"
+      6 = "6  JUNE"
+      7 = "7  JULY"
+      8 = "8  AUGUST"
+      9 = "9  SEPTEMBER"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      10 = "10 OCTOBER"
+      11 = "11 NOVEMBER"
+      12 = "12 DECEMBER"
+      13 = "13 NEVER COMPLETED"
+      14 = "14 DO NOT INTEND TO COMPLETE"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value CSPEAK
+      1 = "1 ENGLISH"
+      2 = "2 SPANISH"
+      3 = "3 ENGLISH AND SPANISH EQUALLY"
+      4 = "4 ENGLISH AND ANOTHER LANGUAGE EQUALLY"
+      5 = "5 CHILD DOESN'T SPEAK"
+      91 = "91 ANOTHER LANGUAGE"
+   ;
+   value DADEDU1C
+      1 = "1  LESS THAN HIGH SCHOOL DIPLOMA"
+      2 = "2  HIGH SCHOOL GRADUATE OR EQUIVALENT"
+      3 = "3  VOC/TECH DEGREE OR SOME COLLEGE"
+      4 = "4  COLLEGE GRADUATE"
+      5 = "5  GRADUATE OR PROFESSIONAL SCHOOL"
+      -1 = "-1 NO FATHER/MALE GUARDIAN IN THE HOUSEHOLD"
+   ;
+   value DADEDU2C
+      1 = "1  LESS THAN HIGH SCHOOL DIPLOMA"
+      2 = "2  HIGH SCHOOL GRADUATE OR EQUIVALENT"
+      3 = "3  VOC/TECH DEGREE OR SOME COLLEGE"
+      4 = "4  COLLEGE GRADUATE"
+      5 = "5  GRADUATE OR PROFESSIONAL SCHOOL"
+      -1 = "-1 NO 2ND FATHER/MALE GUARDIAN IN THE HOUSEHOLD"
+   ;
+   value DADTYPE
+      1 = "1  BIRTH FATHER"
+      2 = "2  ADOPT FATHER"
+      3 = "3  STEPFATHER"
+      4 = "4  FOSTER FATHER"
+      5 = "5  OTHER PARENT OR GUARDIAN"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value DEMPLD1F
+      1 = "1  >= 35 HRS P/WK"
+      2 = "2  < 35 HRS P/WK"
+      3 = "3  LOOKING F/WORK"
+      4 = "4  N/LABOR FORCE"
+      -1 = "-1 NO FATHER/MALE GUARDIAN IN THE HOUSEHOLD"
+   ;
+   value DEMPLD2F
+      1 = "1  >= 35 HRS P/WK"
+      2 = "2  < 35 HRS P/WK"
+      3 = "3  LOOKING F/WORK"
+      4 = "4  N/LABOR FORCE"
+      -1 = "-1 NO 2ND FATHER/MALE GUARDIAN IN THE HOUSEHOLD"
+   ;
+   value DISABLTY
+      1 = "1 CURRENTLY HAS A DISABILITY"
+      2 = "2 DOES NOT CURRENTLY HAVE A DISABILITY"
+   ;
+   value ENGLSPAF
+      1 = "1 ENGLISH"
+      2 = "2 SPANISH"
+   ;
+   value FAMILY
+      1 = "1 TWO PARENTS AND SIBLING(S)"
+      2 = "2 TWO PARENTS, NO SIBLING"
+      3 = "3 ONE PARENT AND SIBLING(S)"
+      4 = "4 ONE PARENT, NO SIBLING"
+      5 = "5 OTHER"
+   ;
+   value FLAG
+      1 = "1  FLAG SET"
+      2 = "2  FLAG NOT SET"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value FOREADTO
+      1 = "1  NOT AT ALL"
+      2 = "2  ONCE OR TWICE"
+      3 = "3  3 OR MORE TIMES"
+      4 = "4  EVERY DAY"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value GENNUMF
+      0 = " 0"
+      1 = " 1"
+      2 = " 2"
+      3 = " 3"
+      4 = " 4"
+      5 = " 5"
+      6 = " 6"
+      7 = " 7"
+      8 = " 8"
+      9 = " 9"
+      10 = "10"
+      11 = "11"
+      12 = "12"
+      13 = "13"
+      14 = "14"
+      15 = "15"
+      16 = "16"
+      17 = "17"
+      18 = "18"
+      19 = "19"
+      20 = "20"
+      21 = "21"
+      22 = "22"
+      23 = "23"
+      24 = "24"
+      25 = "25"
+      26 = "26"
+      27 = "27"
+      28 = "28"
+      29 = "29"
+      30 = "30"
+      31 = "31"
+      32 = "32"
+      33 = "33"
+      34 = "34"
+      35 = "35"
+      36 = "36"
+      37 = "37"
+      38 = "38"
+      39 = "39"
+      40 = "40"
+      41 = "41"
+      42 = "42"
+      43 = "43"
+      44 = "44"
+      45 = "45"
+      46 = "46"
+      47 = "47"
+      48 = "48"
+      49 = "49"
+      50 = "50"
+      51 = "51"
+      52 = "52"
+      53 = "53"
+      54 = "54"
+      55 = "55"
+      56 = "56"
+      57 = "57"
+      58 = "58"
+      59 = "59"
+      60 = "60"
+      61 = "61"
+      62 = "62"
+      63 = "63"
+      64 = "64"
+      65 = "65"
+      66 = "66"
+      67 = "67"
+      68 = "68"
+      69 = "69"
+      70 = "70"
+      71 = "71"
+      72 = "72"
+      73 = "73"
+      74 = "74"
+      75 = "75"
+      76 = "76"
+      77 = "77"
+      78 = "78"
+      79 = "79"
+      80 = "80"
+      81 = "81"
+      82 = "82"
+      83 = "83"
+      84 = "84"
+      85 = "85"
+      86 = "86"
+      87 = "87"
+      88 = "88"
+      89 = "89"
+      90 = "90"
+      91 = "91"
+      92 = "92"
+      93 = "93"
+      94 = "94"
+      95 = "95"
+      96 = "96"
+      97 = "97"
+      98 = "98"
+      99 = "99"
+      100 = "100"
+      1986 = "1986"
+      1987 = "1987"
+      1988 = "1988"
+      1989 = "1989"
+      1990 = "1990"
+      1991 = "1991"
+      1992 = "1992"
+      1993 = "1993"
+      1994 = "1994"
+      1995 = "1995"
+      1996 = "1996"
+      1997 = "1997"
+      1998 = "1998"
+      1999 = "1999"
+      2000 = "2000"
+      2001 = "2001"
+      2002 = "2002"
+      2003 = "2003"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value HDHEALTH
+      1 = "1  EXCELLENT"
+      2 = "2  VERY GOOD"
+      3 = "3  GOOD"
+      4 = "4  FAIR"
+      5 = "5  POOR"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value HDSCHL
+      1 = "1 YES"
+      2 = "2 NO"
+      3 = "3 NO LONGER HAS CONDITION"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value HDWEIGH
+      1 = "1 OVERWEIGHT"
+      2 = "2 UNDERWEIGHT"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value HHDADF
+      1 = "1 BIRTH OR ADOPTIVE FATHER"
+      2 = "2 STEP/FOSTER FATHER/OTH PRNT GUARD OR MALE PRTNR"
+      3 = "3 MALE RES/NO MOTHER OR FATHER IN HH"
+      4 = "4 OTHER"
+   ;
+   value HHMOMF
+      1 = "1 BIRTH OR ADOPTIVE MOTHER"
+      2 = "2 STEP/FOSTER MOTHER/OTH PRNT GUARD OR FEM PRTNR"
+      3 = "3 FEMALE RES/NO MOTHER OR FATHER IN HH"
+      4 = "4 OTHER"
+   ;
+   value HHPARN
+      1 = "1 MOTHER AND FATHER OR TWO SAME-SEX PARENTS"
+      2 = "2 MOTHER ONLY"
+      3 = "3 FATHER ONLY"
+      4 = "4 NONPARENT GUARDIAN(S)"
+   ;
+   value HHPARN1F
+      1 = "1 MOTHER AND FATHER"
+      2 = "2 MOTHER ONLY"
+      3 = "3 FATHER ONLY"
+      4 = "4 NONPARENT GUARDIAN(S)"
+   ;
+   value HIGHGRAD
+      1 = "1  UP TO 8TH GR"
+      2 = "2  9TH-11TH GR"
+      3 = "3  12TH GR/NO DIPL"
+      4 = "4  HS DIPL/EQUIV"
+      5 = "5  V/T AF HS/NO D"
+      6 = "6  V/T AF HS/DIPL"
+      7 = "7  COLL/NO DEGR"
+      8 = "8  AA/AS"
+      9 = "9  BA/BS"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      10 = "10 GRAD SCH/NO DEG"
+      11 = "11 MA/MS"
+      12 = "12 PHD/EDD"
+      13 = "13 PROF DEG/AF BA"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value HINCM50K
+      1 = "1  $50K OR LESS"
+      2 = "2  MORE THAN $50K"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value HOMEALL
+      1 = "1  ALL AT HOME"
+      2 = "2  SOME AT SCHOOL & SOME AT HOME"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value IBWORK
+      1 = "1  YES"
+      2 = "2  NO"
+      3 = "3  RETIRED"
+      4 = "4  DISABLED/UNABLE TO WORK"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value IMPF
+      0 = "0 NOT IMPUTED"
+      1 = "1 IMPUTED W/O RECODING"
+      2 = "2 IMPUTED W RECODING"
+      3 = "3 IMPUTED BY HAND"
+      4 = "4 IMPUTED FROM DK"
+   ;
+   value INCOME
+      1 = "1  $25,000 OR LESS"
+      2 = "2  MORE THAN $25,000"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value INCOMRNG
+      1 = "1  $5,000 OR LESS"
+      2 = "2  $5,001 - $10K"
+      3 = "3  $10,001 - $15K"
+      4 = "4  $15,001 - $20K"
+      5 = "5  $20,001 - $25K"
+      6 = "6  $25,001 - $30K"
+      7 = "7  $30,001 - $35K"
+      8 = "8  $35,001 - $40K"
+      9 = "9  $40,001 - $45K"
+      10 = "10 $45,001 - $50K"
+      11 = "11 $50,001 - $60K"
+      12 = "12 $60,001 - $75K"
+      13 = "13 $75,001 - $100K"
+      14 = "14 OVER $100K"
+   ;
+   value LANGUAGE
+      1 = "1 BOTH/ONLY PARNTS FIRST/MAIN LANG ENG"
+      2 = "2 1 OF 2 PARNTS FIRST/MAIN LANG ENG"
+      3 = "3 NO PRNTS FIRST/MAIN LANG ENG"
+   ;
+   value MEMPLD1F
+      1 = "1  >= 35 HRS P/WK"
+      2 = "2  < 35 HRS P/WK"
+      3 = "3  LOOKING F/WORK"
+      4 = "4  N/LABOR FORCE"
+      -1 = "-1 NO MOTHER/FEMALE GUARDIAN IN THE HOUSEHOLD"
+   ;
+   value MEMPLD2F
+      1 = "1  >= 35 HRS P/WK"
+      2 = "2  < 35 HRS P/WK"
+      3 = "3  LOOKING F/WORK"
+      4 = "4  N/LABOR FORCE"
+      -1 = "-1 NO 2ND MOTHER/FEMALE GUARDIAN IN THE HOUSEHOLD"
+   ;
+   value MOMBORN
+      1 = "1  UNITED STATES"
+      2 = "2  U.S. TERRITORIES"
+      3 = "3  ANOTHER COUNTRY"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value MOMEDU1C
+      1 = "1  LESS THAN HIGH SCHOOL DIPLOMA"
+      2 = "2  HIGH SCHOOL GRADUATE OR EQUIVALENT"
+      3 = "3  VOC/TECH DEGREE OR SOME COLLEGE"
+      4 = "4  COLLEGE GRADUATE"
+      5 = "5  GRADUATE OR PROFESSIONAL SCHOOL"
+      -1 = "-1 NO MOTHER/FEMALE GUARDIAN IN THE HOUSEHOLD"
+   ;
+   value MOMEDU2C
+      1 = "1  LESS THAN HIGH SCHOOL DIPLOMA"
+      2 = "2  HIGH SCHOOL GRADUATE OR EQUIVALENT"
+      3 = "3  VOC/TECH DEGREE OR SOME COLLEGE"
+      4 = "4  COLLEGE GRADUATE"
+      5 = "5  GRADUATE OR PROFESSIONAL SCHOOL"
+      -1 = "-1 NO 2ND MOTHER/FEMALE GUARDIAN IN THE HOUSEHOLD"
+   ;
+   value MOMFTF1Y
+      1 = "1 FULL-TIME AND FULL YEAR"
+      2 = "2 LESS THAN FT OR LESS THAN FULL YEAR"
+      3 = "3 NOT EMPLOYED DURING PAST YEAR"
+      -1 = "-1 NO MOTHER IN HH"
+   ;
+   value MOMFTF2Y
+      1 = "1 FULL-TIME AND FULL YEAR"
+      2 = "2 LESS THAN FT OR LESS THAN FULL YEAR"
+      3 = "3 NOT EMPLOYED DURING PAST YEAR"
+      -1 = "-1 NO 2ND MOTHER IN HH"
+   ;
+   value MOMSPEAK
+      1 = "1  ENGLISH"
+      2 = "2  SPANISH"
+      3 = "3  SPAN/ENGL EQLY"
+      4 = "4  ENGL/OTH LANG EQLY"
+      5 = "5  ENGL/FIRST LANG EQLY"
+      6 = "6  FIRST LANGUAGE"
+      91 = "91 ANTHR LANG"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value MOMSTAT
+      1 = "1  MARRIED OR REMARRIED"
+      2 = "2  SEPARATED"
+      3 = "3  DIVORCED"
+      4 = "4  WIDOWED"
+      5 = "5  NEVER MARRIED"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value MOMTYPE
+      1 = "1  BIRTH MOTHER"
+      2 = "2  ADOPT MOTHER"
+      3 = "3  STEPMOTHER"
+      4 = "4  FOSTER MOTHER"
+      5 = "5  OTHER PARENT OR GUARDIAN"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value PARGRADE
+      1 = "1 LESS THAN HIGH SCHOOL DIPLOMA"
+      2 = "2 HIGH SCHOOL GRADUATE OR EQUIVALENT"
+      3 = "3 VOC/TECH AFTER HIGH SCHOOL OR SOME COLLEGE"
+      4 = "4 COLLEGE GRADUATE"
+      5 = "5 GRADUATE OR PROFESSIONAL SCHOOL"
+   ;
+   value PARRELN
+      1 = "1  MOTHER"
+      2 = "2  FATHER"
+      3 = "3  BROTHER"
+      4 = "4  SISTER"
+      5 = "5  GRANDMOTHER"
+      6 = "6  GRANDFATHER"
+      7 = "7  AUNT"
+      8 = "8  UNCLE"
+      9 = "9  COUSIN"
+      10 = "10 OTHER RELATIVE"
+      11 = "11 NONRELATIVE"
+      12 = "12 SAME SEX PARENT"
+      13 = "13 GIRLFRND/PARTNER"
+      14 = "14 BOYFRIEND/PARTNER"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value PGRAD1_
+      0 = "0  NO FORMAL SCHOOLING"
+      1 = "1  1ST GR"
+      2 = "2  2ND GR"
+      3 = "3  3RD GR"
+      4 = "4  4TH GR"
+      5 = "5  5TH GR"
+      6 = "6  6TH GR"
+      7 = "7  7TH GR"
+      8 = "8  8TH GR"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value PGRAD2_
+      9 = "9  9TH GR"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      10 = "10 10TH GR"
+      11 = "11 11TH GR"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value RACEETH
+      1 = "1 WHITE, NON-HISPANIC"
+      2 = "2 BLACK, NON-HISPANIC"
+      3 = "3 HISPANIC"
+      4 = "4 ASIAN OR PACIFIC ISLANDER"
+      5 = "5 ALL OTHER RACES"
+   ;
+   value RACEETHN
+      1 = "1 WHITE, NON-HISPANIC"
+      2 = "2 BLACK, NON-HISPANIC"
+      3 = "3 HISPANIC"
+      4 = "4 ALL OTHER RACES AND MULTIPLE RACES, NON-HISPANIC"
+   ;
+   value SATISSC
+      1 = "1 VERY SATISFIED"
+      2 = "2 SOMEWHAT SATISFIED"
+      3 = "3 SOMEWHAT DISSATISFIED"
+      4 = "4 VERY DISSATISFIED"
+      5 = "5 DOES NOT APPLY"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value SEAGREE
+      1 = "1  STRONGLY AGREE"
+      2 = "2  AGREE"
+      3 = "3  DISAGREE"
+      4 = "4  STRONGLY DISAGREE"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DK"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value SEX
+      1 = " 1 MALE"
+      2 = " 2 FEMALE"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value STRATUM
+      1 = "1 HIGH MINORITY STRATUM"
+      2 = "2 LOW MINORITY STRATUM"
+   ;
+   value TE_112F
+      1 = "1 WHEN OLD ENOUGH/BASED ON BIRTHDATE"
+      2 = "2 WILL WAIT/WAITED"
+      3 = "3 ENTERED/WILL ENTER EARLY"
+      4 = "4 HAVEN'T DECIDED/THOUGHT ABOUT IT"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_130F
+      0 = "0 NEVER"
+      1 = "1 ONCE OR TWICE"
+      2 = "2 3 OR 4 TIMES"
+      3 = "3 5 OR MORE TIMES"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_133F
+      1 = "1 ESSENTIAL"
+      2 = "2 VERY IMPORTANT"
+      3 = "3 SOMEWHAT IMPORTANT"
+      4 = "4 NOT AT ALL IMPORTANT"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_160F
+      1 = "1 NUMBER GIVEN"
+      2 = "2 DOESN�T WATCH WEEKDAYS"
+      3 = "3 NEVER WATCHES TV/VIDEOS"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_161F
+      1 = "1 NUMBER GIVEN"
+      2 = "2 DOESN�T WATCH WEEKENDS"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_183F
+      1 = "1 DON'T PLAN FOR CHILD TO ATTEND"
+      2 = "2 THIS SPRING/SUMMER (2007)"
+      3 = "3 THIS FALL (2007)"
+      4 = "4 NEXT WINTER/SPRING/SUMMER (2008)"
+      5 = "5 NEXT FALL (2008)"
+      6 = "6 WINTER/SPRING/SUMMER 2009"
+      7 = "7 FALL 2009"
+      8 = "8 WINTER/SPRING/SUMMER 2010"
+      9 = "9 FALL 2010"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_197F
+      1 = "1  ENGLISH"
+      2 = "2  SPANISH"
+      3 = "3  ENGLISH AND SPANISH EQUALLY"
+      91 = "91 ENGLISH AND ANOTHER LANGUAGE EQUALLY"
+      92 = "92 ANOTHER LANGUAGE"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_60F
+      1 = "1 NEVER"
+      2 = "2 RARELY"
+      3 = "3 SOMETIMES"
+      4 = "4 OFTEN"
+      5 = "5 VERY OFTEN"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_61F
+      1 = "1 ALL OF THEM"
+      2 = "2 SOME OF THEM"
+      3 = "3 NONE OF THEM"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_62F
+      1 = "1 NOT AT ALL"
+      2 = "2 UP TO FIVE"
+      3 = "3 UP TO TEN"
+      4 = "4 UP TO TWENTY"
+      5 = "5 UP TO FIFTY"
+      6 = "6 UP TO 100 OR MORE"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_63F
+      1 = "1 NEVER"
+      2 = "2 RARELY"
+      3 = "3 SOMETIMES"
+      4 = "4 OFTEN"
+      5 = "5 VERY OFTEN"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_64F
+      1 = "1 ALL OF THE LETTERS OF THE ALPHABET"
+      2 = "2 MOST OF THEM"
+      3 = "3 SOME OF THEM"
+      4 = "4 NONE OF THEM"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_65F
+      1 = "1 USES FINGERS"
+      2 = "2 GRIPS IN FIST"
+      3 = "3 CANNOT HOLD A PENCIL"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_75F
+      1 = "1 NOT AT ALL"
+      2 = "2 ONCE OR TWICE"
+      3 = "3 3 OR FOUR TIMES"
+      4 = "4 FIVE OR MORE TIMES"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_76F
+      1 = "1 USUALLY"
+      2 = "2 SOMETIMES"
+      3 = "3 NEVER"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_78F
+      1 = "1 NOT AT ALL"
+      2 = "2 ONCE OR TWICE"
+      3 = "3 3 OR MORE TIMES"
+      4 = "4 EVERY DAY"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TE_84F
+      1 = "1 READS THE WRITTEN WORDS"
+      2 = "2 PRETENDS TO READ"
+      3 = "3 DOES BOTH"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value TVCHMOSF
+      1 = "1 ABC, CBS, NBC, FOX, CW (UPN/WB)"
+      2 = "2 ANIMAL PLANET"
+      3 = "3 BOOMERANG/CARTOON NETWORK/NICKTOONS"
+      4 = "4 CHRISTIAN CHANNEL (E.G. CTN, CORNERSTONE)"
+      5 = "5 DISCOVERY CHANNEL/KIDS"
+      6 = "6 DISNEY CHANNEL"
+      7 = "7 SPORTS CHANNEL (E.G. ESPN, SPEED, SOCCER CHNL)"
+      8 = "8 FAMILY CHANNEL"
+      9 = "9 MTV/VH-1"
+      10 = "10 NICKELODEON/NICK-AT-NITE/NICK JR"
+      11 = "11 NEWS NETWORK (E.G. CNN, CNBC, MSNBC, FOX NEWS)"
+      12 = "12 NOGGIN"
+      13 = "13 PBS/PBS SPROUT/PBS KIDS"
+      14 = "14 SPANISH LNG CHNL (E.G. GALAVISION, TELEMUNDO)"
+      15 = "15 THE LEARNING CHANNEL (TLC)"
+      16 = "16 TV LAND"
+      17 = "17 THE HISTORY CHANNEL"
+      18 = "18 FOOD NETWORK"
+      19 = "19 OTHER"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value YESNO
+      1 = "1  YES"
+      2 = "2  NO"
+      -7 = "-7 REFUSED"
+      -8 = "-8 DON'T KNOW"
+      -9 = "-9 NOT ASCERTAINED"
+      -1 = "-1 INAPPLICABLE"
+   ;
+   value ZIP18PO
+      1 = "1 LESS THAN 5 PERCENT"
+      2 = "2 5-9 PERCENT"
+      3 = "3 10-19 PERCENT"
+      4 = "4 20 PERCENT OR MORE"
+   ;
+   value ZIPBLHI
+      1 = "1 LESS THAN 6 PERCENT"
+      2 = "2 6-15 PERCENT"
+      3 = "3 16-40 PERCENT"
+      4 = "4 41 PERCENT OR MORE"
+   ;
+   value ZIPLOCL
+      1 = "1  CITY - LARGE"
+      2 = "2  CITY - MIDSIZE"
+      3 = "3  CITY - SMALL"
+      4 = "4  SUBURB - LARGE"
+      5 = "5  SUBURB - MIDSIZE"
+      6 = "6  SUBURB - SMALL"
+      7 = "7  TOWN - FRINGE"
+      8 = "8  TOWN - DISTANT"
+      9 = "9  TOWN - REMOTE"
+      10 = "10 RURAL - FRINGE"
+      11 = "11 RURAL - DISTANT"
+      12 = "12 RURAL - REMOTE"
+   ;
+
+run;
+
+data lib.sr07;
+   infile in1 lrecl=1790;
+      input 
+   #1
+      @1 BASMID 12.
+      @13 BASEID 8.
+      @21 MAINRSLT $2.
+      @23 PATH $2.
+      @25 ENGLSPAN 2.
+      @27 AGE2006 2.
+      @29 SEX 2.
+      @31 RESPAGE 2.
+      @33 RESPSEX 2.
+      @35 RESRELN 2.
+      @37 MOMAGE1 2.
+      @39 MOMTYPE1 2.
+      @41 MOMAGE2 2.
+      @43 MOMTYPE2 2.
+      @45 DADAGE1 2.
+      @47 DADTYPE1 2.
+      @49 DADAGE2 2.
+      @51 DADTYPE2 2.
+      @53 AGE1 2.
+      @55 SEX1 2.
+      @57 RELATN1 2.
+      @59 AGE2 2.
+      @61 SEX2 2.
+      @63 RELATN2 2.
+      @65 AGE3 2.
+      @67 SEX3 2.
+      @69 RELATN3 2.
+      @71 AGE4 2.
+      @73 SEX4 2.
+      @75 RELATN4 2.
+      @77 AGE5 2.
+      @79 SEX5 2.
+      @81 RELATN5 2.
+      @83 AGE6 2.
+      @85 SEX6 2.
+      @87 RELATN6 2.
+      @89 CDOBMM 2.
+      @91 CDOBYY 4.
+      @95 CSPEAK 2.
+      @97 RESPEAK 2.
+      @99 ENROLL 2.
+      @101 HOMESCHL 2.
+      @103 HOMEALL 2.
+      @105 HOMSCHR 2.
+      @107 HOMSCFLG 2.
+      @109 GRADE $2.
+      @111 GRADEEQ $2.
+      @113 CPNNOW 2.
+      @115 CPNEVER 2.
+      @117 CPHRS 2.
+      @119 CPVISIT 2.
+      @121 PCEVRHD 2.
+      @123 DPCOLOR 2.
+      @125 DPLETTER 2.
+      @127 DPCOUNT 2.
+      @129 DPNAME 2.
+      @131 DPRHYME 2.
+      @133 DPSTSND 2.
+      @135 DPPENCIL 2.
+      @137 DPFIDGET 2.
+      @139 DPSPEAK 2.
+      @141 KPSTART 2.
+      @143 KPENROLL 2.
+      @145 SEENJOY 2.
+      @147 SEDOWELL 3.
+      @150 HABOOKS 3.
+      @153 FOREADTO 2.
+      @155 MOTHERFG 2.
+      @157 FATHERMG 2.
+      @159 SISBRO 2.
+      @161 ANOTADLT 2.
+      @163 SOMEONEL 2.
+      @165 FORDDAY 2.
+      @167 FOPICTR 2.
+      @169 FOLETTR 2.
+      @171 FOCHREAD 2.
+      @173 FOTLKSTR 2.
+      @175 HASTORY 2.
+      @177 HAWORDS 2.
+      @179 HAPRETND 2.
+      @181 FOCHLRD 2.
+      @183 HALEAPPD 2.
+      @185 FOSTORY1 2.
+      @187 FOWORDS 2.
+      @189 FOMUSIC 2.
+      @191 FOCRAFT1 2.
+      @193 FOSPORT1 2.
+      @195 FOGAMES1 2.
+      @197 FODINNER 2.
+      @199 FOLIBRAR 2.
+      @201 FOBOOKST 2.
+      @203 FOCONCRT 2.
+      @205 FOMUSEUM 2.
+      @207 FOZOO 2.
+      @209 FOGROUP 2.
+      @211 FOSPRTEV 2.
+      @213 TVHRWKDY 2.
+      @215 TVWKDYNU 2.
+      @217 TVHRWKND 2.
+      @219 TVWKNDNU 2.
+      @221 ABCCBSCW 2.
+      @223 ANIMPLAN 2.
+      @225 CARTOONS 2.
+      @227 CHRSTNCH 2.
+      @229 DISCOVER 2.
+      @231 DISNEYCH 2.
+      @233 SPORTSCH 2.
+      @235 FAMILYCH 2.
+      @237 MTVVH1 2.
+      @239 NICKELOD 2.
+      @241 NEWSNET 2.
+      @243 NOGGIN 2.
+      @245 PBSSPRT 2.
+      @247 SPNLNGCH 2.
+      @249 LEARNCH 2.
+      @251 TVLAND 2.
+      @253 HISTCHAN 2.
+      @255 FOODNET 2.
+      @257 TVOTHER 2.
+      @259 VIDNOTV 2.
+      @261 TVCHMOST 2.
+      @263 FORTVPRG 2.
+      @265 PARREAD 2.
+      @267 RPALPHA 2.
+      @269 RPSHARE 2.
+      @271 RPREAD 2.
+      @273 RPNUMB 2.
+      @275 RPPENCIL 2.
+      @277 RPDISCP 2.
+      @279 HDBRTHW5 2.
+      @281 HDBRTHW3 2.
+      @283 HDPRMTR4 2.
+      @285 HDHOSP 3.
+      @288 HDIFSP 2.
+      @290 HDHEALTH 2.
+      @292 HDCHINS 2.
+      @294 HDWEIGHT 2.
+      @296 HDWEIGHT2 2.
+      @298 HDLEARN 2.
+      @300 HDMENRET 2.
+      @302 HDSPEECH 2.
+      @304 HDDISTRB 2.
+      @306 HDDEAFIM 2.
+      @308 HDBLIND 2.
+      @310 HDORTHO 2.
+      @312 HDAUTISM 2.
+      @314 HDADD 2.
+      @316 HDPDD 2.
+      @318 HDOTHER 2.
+      @320 HDSCHL 2.
+      @322 HDGOVT 2.
+      @324 HDDOCTOR 2.
+      @326 HDSOURCE 2.
+      @328 HDIEP 2.
+      @330 HDDEVIEP 2.
+      @332 HDSPCLED 2.
+      @334 HDCOMMU 2.
+      @336 HDTCHR 2.
+      @338 HDACCOM 2.
+      @340 HDCOMMIT 2.
+      @342 HDAFFECT 2.
+      @344 CBORNUS 2.
+      @346 CMOVEAGE 2.
+      @348 CHISPAN 2.
+      @350 CWHITE 2.
+      @352 CBLACK 2.
+      @354 CAMIND 2.
+      @356 CASIAN 2.
+      @358 CPACI 2.
+      @360 CRACEOTH 2.
+      @362 MOMNEW1 2.
+      @364 MOMSTAT1 2.
+      @366 MOMLIVW1 2.
+      @368 MOMLANG1 2.
+      @370 MOMSPEAK1 2.
+      @372 MOMBORN1 2.
+      @374 MHISPAN1 2.
+      @376 MWHITE1 2.
+      @378 MBLACK1 2.
+      @380 MAMIND1 2.
+      @382 MASIAN1 2.
+      @384 MPACI1 2.
+      @386 MRACEOTH1 2.
+      @388 MOMGRADE1 2.
+      @390 MOMGRAD11 2.
+      @392 MOMGRAD21 2.
+      @394 MOMVOTEC1 2.
+      @396 MOMDIPL1 2.
+      @398 MOMWORK1 2.
+      @400 MOMLEAVE1 2.
+      @402 MOMHOURS1 2.
+      @404 MOMMTHS1 2.
+      @406 MOMLOOK1 2.
+      @408 MOMAGN1 2.
+      @410 MOMEMPL1 2.
+      @412 MOMREL1 2.
+      @414 MOMANSAD1 2.
+      @416 MOMENROL1 2.
+      @418 MOMNEW2 2.
+      @420 MOMSTAT2 2.
+      @422 MOMLIVW2 2.
+      @424 MOMLANG2 2.
+      @426 MOMSPEAK2 2.
+      @428 MOMBORN2 2.
+      @430 MHISPAN2 2.
+      @432 MWHITE2 2.
+      @434 MBLACK2 2.
+      @436 MAMIND2 2.
+      @438 MASIAN2 2.
+      @440 MPACI2 2.
+      @442 MRACEOTH2 2.
+      @444 MOMGRADE2 2.
+      @446 MOMGRAD12 2.
+      @448 MOMGRAD22 2.
+      @450 MOMVOTEC2 2.
+      @452 MOMDIPL2 2.
+      @454 MOMWORK2 2.
+      @456 MOMLEAVE2 2.
+      @458 MOMHOURS2 2.
+      @460 MOMMTHS2 2.
+      @462 MOMLOOK2 2.
+      @464 MOMAGN2 2.
+      @466 MOMEMPL2 2.
+      @468 MOMREL2 2.
+      @470 MOMANSAD2 2.
+      @472 MOMENROL2 2.
+      @474 DADSTAT1 2.
+      @476 DADLIVW1 2.
+      @478 DADLANG1 2.
+      @480 DADSPEAK1 2.
+      @482 DADBORN1 2.
+      @484 DHISPAN1 2.
+      @486 DWHITE1 2.
+      @488 DBLACK1 2.
+      @490 DAMIND1 2.
+      @492 DASIAN1 2.
+      @494 DPACI1 2.
+      @496 DRACEOTH1 2.
+      @498 DADGRADE1 2.
+      @500 DADGRAD11 2.
+      @502 DADGRAD21 2.
+      @504 DADVOTEC1 2.
+      @506 DADDIPL1 2.
+      @508 DADWORK1 2.
+      @510 DADLEAVE1 2.
+      @512 DADHOURS1 2.
+      @514 DADMTHS1 2.
+      @516 DADLOOK1 2.
+      @518 DADAGN1 2.
+      @520 DADEMPL1 2.
+      @522 DADREL1 2.
+      @524 DADANSAD1 2.
+      @526 DADENROL1 2.
+      @528 DADSTAT2 2.
+      @530 DADLIVW2 2.
+      @532 DADLANG2 2.
+      @534 DADSPEAK2 2.
+      @536 DADBORN2 2.
+      @538 DHISPAN2 2.
+      @540 DWHITE2 2.
+      @542 DBLACK2 2.
+      @544 DAMIND2 2.
+      @546 DASIAN2 2.
+      @548 DPACI2 2.
+      @550 DRACEOTH2 2.
+      @552 DADGRADE2 2.
+      @554 DADGRAD12 2.
+      @556 DADGRAD22 2.
+      @558 DADVOTEC2 2.
+      @560 DADDIPL2 2.
+      @562 DADWORK2 2.
+      @564 DADLEAVE2 2.
+      @566 DADHOURS2 2.
+      @568 DADMTHS2 2.
+      @570 DADLOOK2 2.
+      @572 DADAGN2 2.
+      @574 DADEMPL2 2.
+      @576 DADREL2 2.
+      @578 DADANSAD2 2.
+      @580 DADENROL2 2.
+      @582 FOINTHM 2.
+      @584 HWELFTAN 2.
+      @586 HWELFST 2.
+      @588 HWIC 2.
+      @590 HFOODST 2.
+      @592 HMEDICAD 2.
+      @594 HCHIP 2.
+      @596 HSECN8 2.
+      @598 H3YRMOVE 2.
+      @600 HINCMRNG 2.
+      @602 HINCM50K 2.
+      @604 HINCOME 2.
+      @606 ALLGRADE $2.
+      @608 CENREG 2.
+      @610 DADEDUC1 2.
+      @612 DADEMPLD1 2.
+      @614 DADEDUC2 2.
+      @616 DADEMPLD2 2.
+      @618 DISABLTY 2.
+      @620 DISBLTY2 2.
+      @622 FAMILY 2.
+      @624 FAMILY07 2.
+      @626 HH18OVER 2.
+      @628 HHDAD1 2.
+      @630 HHDAD2 2.
+      @632 HHMOM1 2.
+      @634 HHMOM2 2.
+      @636 HHPARN1 2.
+      @638 HHPARN07 2.
+      @640 HHTOTAL 2.
+      @642 HHUNDR6 2.
+      @644 HHUNDR10 2.
+      @646 HHUNDR13 2.
+      @648 HHUNDR18 2.
+      @650 HHUNDR21 2.
+      @652 LANGUAGE07 2.
+      @654 MOMEDUC1 2.
+      @656 MOMEMPLD1 2.
+      @658 MOMFTFY1 2.
+      @660 MOMEDUC2 2.
+      @662 MOMEMPLD2 2.
+      @664 MOMFTFY2 2.
+      @666 NUMSIBS 2.
+      @668 PARGRADE07 2.
+      @670 RACEETHN 2.
+      @672 RACEETH2 2.
+      @674 TVHOURS 3.
+      @677 ZIP18PO2 2.
+      @679 ZIPBLHI2 2.
+      @681 ZIPLOCL 2.
+      @683 FRWT 8.3
+      @691 FRWT1 8.3
+      @699 FRWT2 8.3
+      @707 FRWT3 8.3
+      @715 FRWT4 8.3
+      @723 FRWT5 8.3
+      @731 FRWT6 8.3
+      @739 FRWT7 8.3
+      @747 FRWT8 8.3
+      @755 FRWT9 8.3
+      @763 FRWT10 8.3
+      @771 FRWT11 8.3
+      @779 FRWT12 8.3
+      @787 FRWT13 8.3
+      @795 FRWT14 8.3
+      @803 FRWT15 8.3
+      @811 FRWT16 8.3
+      @819 FRWT17 8.3
+      @827 FRWT18 8.3
+      @835 FRWT19 8.3
+      @843 FRWT20 8.3
+      @851 FRWT21 8.3
+      @859 FRWT22 8.3
+      @867 FRWT23 8.3
+      @875 FRWT24 8.3
+      @883 FRWT25 8.3
+      @891 FRWT26 8.3
+      @899 FRWT27 8.3
+      @907 FRWT28 8.3
+      @915 FRWT29 8.3
+      @923 FRWT30 8.3
+      @931 FRWT31 8.3
+      @939 FRWT32 8.3
+      @947 FRWT33 8.3
+      @955 FRWT34 8.3
+      @963 FRWT35 8.3
+      @971 FRWT36 8.3
+      @979 FRWT37 8.3
+      @987 FRWT38 8.3
+      @995 FRWT39 8.3
+      @1003 FRWT40 8.3
+      @1011 FRWT41 8.3
+      @1019 FRWT42 8.3
+      @1027 FRWT43 8.3
+      @1035 FRWT44 8.3
+      @1043 FRWT45 8.3
+      @1051 FRWT46 8.3
+      @1059 FRWT47 8.3
+      @1067 FRWT48 8.3
+      @1075 FRWT49 8.3
+      @1083 FRWT50 8.3
+      @1091 FRWT51 8.3
+      @1099 FRWT52 8.3
+      @1107 FRWT53 8.3
+      @1115 FRWT54 8.3
+      @1123 FRWT55 8.3
+      @1131 FRWT56 8.3
+      @1139 FRWT57 8.3
+      @1147 FRWT58 8.3
+      @1155 FRWT59 8.3
+      @1163 FRWT60 8.3
+      @1171 FRWT61 8.3
+      @1179 FRWT62 8.3
+      @1187 FRWT63 8.3
+      @1195 FRWT64 8.3
+      @1203 FRWT65 8.3
+      @1211 FRWT66 8.3
+      @1219 FRWT67 8.3
+      @1227 FRWT68 8.3
+      @1235 FRWT69 8.3
+      @1243 FRWT70 8.3
+      @1251 FRWT71 8.3
+      @1259 FRWT72 8.3
+      @1267 FRWT73 8.3
+      @1275 FRWT74 8.3
+      @1283 FRWT75 8.3
+      @1291 FRWT76 8.3
+      @1299 FRWT77 8.3
+      @1307 FRWT78 8.3
+      @1315 FRWT79 8.3
+      @1323 FRWT80 8.3
+      @1331 RPSU 4.
+      @1335 RSTRATUM 2.
+      @1337 RESPAGF 2.
+      @1339 MOMAGF1 2.
+      @1341 MOMTYPF1 2.
+      @1343 MOMTYPF2 2.
+      @1345 DADAGF1 2.
+      @1347 DADTYPF1 2.
+      @1349 AGF1 2.
+      @1351 RELATF1 2.
+      @1353 AGF2 2.
+      @1355 RELATF2 2.
+      @1357 AGF3 2.
+      @1359 RELATF3 2.
+      @1361 AGF4 2.
+      @1363 AGF5 2.
+      @1365 RELATF6 2.
+      @1367 CDOBMF 2.
+      @1369 CDOBYF 2.
+      @1371 CSPEAF 2.
+      @1373 RESPEAF 2.
+      @1375 ENROLF 2.
+      @1377 HOMESCHF 2.
+      @1379 CPNNOF 2.
+      @1381 CPNEVEF 2.
+      @1383 CPHRF 2.
+      @1385 CPVISIF 2.
+      @1387 PCEVRHF 2.
+      @1389 DPCOLOF 2.
+      @1391 DPLETTEF 2.
+      @1393 DPCOUNF 2.
+      @1395 DPNAMF 2.
+      @1397 DPRHYMF 2.
+      @1399 DPSTSNF 2.
+      @1401 DPPENCIF 2.
+      @1403 DPFIDGEF 2.
+      @1405 DPSPEAF 2.
+      @1407 KPSTARF 2.
+      @1409 KPENROLF 2.
+      @1411 SEENJOF 2.
+      @1413 SEDOWELF 2.
+      @1415 HABOOKF 2.
+      @1417 FOREADTF 2.
+      @1419 MOTHERFF 2.
+      @1421 FATHERMF 2.
+      @1423 SISBRF 2.
+      @1425 ANOTADLF 2.
+      @1427 SOMEONEF 2.
+      @1429 FORDDAF 2.
+      @1431 FOPICTF 2.
+      @1433 FOLETTF 2.
+      @1435 FOCHREAF 2.
+      @1437 FOTLKSTF 2.
+      @1439 HASTORF 2.
+      @1441 HAWORDF 2.
+      @1443 HAPRETNF 2.
+      @1445 FOCHLRF 2.
+      @1447 HALEAPPF 2.
+      @1449 FOSTORF1 2.
+      @1451 FOWORDF 2.
+      @1453 FOMUSIF 2.
+      @1455 FOCRAFF1 2.
+      @1457 FOSPORF1 2.
+      @1459 FOGAMEF1 2.
+      @1461 FODINNEF 2.
+      @1463 FOLIBRAF 2.
+      @1465 FOBOOKSF 2.
+      @1467 FOCONCRF 2.
+      @1469 FOMUSEUF 2.
+      @1471 FOZOF 2.
+      @1473 FOGROUF 2.
+      @1475 FOSPRTEF 2.
+      @1477 TVHRWKDF 2.
+      @1479 TVWKDYNF 2.
+      @1481 TVHRWKNF 2.
+      @1483 TVWKNDNF 2.
+      @1485 ABCCBSCF 2.
+      @1487 ANIMPLAF 2.
+      @1489 CARTOONF 2.
+      @1491 CHRSTNCF 2.
+      @1493 DISCOVEF 2.
+      @1495 DISNEYCF 2.
+      @1497 SPORTSCF 2.
+      @1499 FAMILYCF 2.
+      @1501 MTVVF1 2.
+      @1503 NICKELOF 2.
+      @1505 NEWSNEF 2.
+      @1507 NOGGIF 2.
+      @1509 PBSSPRF 2.
+      @1511 SPNLNGCF 2.
+      @1513 LEARNCF 2.
+      @1515 TVLANF 2.
+      @1517 HISTCHAF 2.
+      @1519 FOODNEF 2.
+      @1521 TVOTHEF 2.
+      @1523 VIDNOTF 2.
+      @1525 TVCHMOSF 2.
+      @1527 FORTVPRF 2.
+      @1529 PARREAF 2.
+      @1531 RPALPHF 2.
+      @1533 RPSHARF 2.
+      @1535 RPREAF 2.
+      @1537 RPNUMF 2.
+      @1539 RPPENCIF 2.
+      @1541 RPDISCF 2.
+      @1543 HDBRTHF5 2.
+      @1545 HDBRTHF3 2.
+      @1547 HDPRMTF4 2.
+      @1549 HDHOSF 2.
+      @1551 HDIFSF 2.
+      @1553 HDHEALTF 2.
+      @1555 HDCHINF 2.
+      @1557 HDWEIGHF 2.
+      @1559 HDWEIGHF2 2.
+      @1561 HDLEARF 2.
+      @1563 HDMENREF 2.
+      @1565 HDSPEECF 2.
+      @1567 HDDISTRF 2.
+      @1569 HDDEAFIF 2.
+      @1571 HDBLINF 2.
+      @1573 HDORTHF 2.
+      @1575 HDAUTISF 2.
+      @1577 HDADF 2.
+      @1579 HDPDF 2.
+      @1581 HDOTHEF 2.
+      @1583 HDSCHF 2.
+      @1585 HDGOVF 2.
+      @1587 HDDOCTOF 2.
+      @1589 HDSOURCF 2.
+      @1591 HDIEF 2.
+      @1593 HDDEVIEF 2.
+      @1595 HDSPCLEF 2.
+      @1597 HDCOMMF 2.
+      @1599 HDTCHF 2.
+      @1601 HDACCOF 2.
+      @1603 HDCOMMIF 2.
+      @1605 HDAFFECF 2.
+      @1607 CBORNUF 2.
+      @1609 CMOVEAGF 2.
+      @1611 CHISPAF 2.
+      @1613 CWHITF 2.
+      @1615 CBLACF 2.
+      @1617 CAMINF 2.
+      @1619 CASIAF 2.
+      @1621 CPACF 2.
+      @1623 CRACEOTF 2.
+      @1625 MOMNEF1 2.
+      @1627 MOMSTAF1 2.
+      @1629 MOMLIVF1 2.
+      @1631 MOMLANF1 2.
+      @1633 MOMSPEAF1 2.
+      @1635 MOMBORF1 2.
+      @1637 MHISPAF1 2.
+      @1639 MWHITF1 2.
+      @1641 MBLACF1 2.
+      @1643 MAMINF1 2.
+      @1645 MASIAF1 2.
+      @1647 MPACF1 2.
+      @1649 MRACEOTF1 2.
+      @1651 MOMGRADF1 2.
+      @1653 MOMGRAF11 2.
+      @1655 MOMGRAF21 2.
+      @1657 MOMVOTEF1 2.
+      @1659 MOMDIPF1 2.
+      @1661 MOMWORF1 2.
+      @1663 MOMLEAVF1 2.
+      @1665 MOMHOURF1 2.
+      @1667 MOMMTHF1 2.
+      @1669 MOMLOOF1 2.
+      @1671 MOMAGNF1 2.
+      @1673 MOMEMPF1 2.
+      @1675 MOMREF1 2.
+      @1677 MOMANSAF1 2.
+      @1679 MOMENROF1 2.
+      @1681 MOMNEF2 2.
+      @1683 MOMSTAF2 2.
+      @1685 MOMLANF2 2.
+      @1687 MOMSPEAF2 2.
+      @1689 MOMBORF2 2.
+      @1691 MHISPAF2 2.
+      @1693 MWHITF2 2.
+      @1695 MBLACF2 2.
+      @1697 MAMINF2 2.
+      @1699 MASIAF2 2.
+      @1701 MPACF2 2.
+      @1703 MRACEOTF2 2.
+      @1705 MOMGRADF2 2.
+      @1707 MOMWORF2 2.
+      @1709 MOMHOURF2 2.
+      @1711 MOMMTHF2 2.
+      @1713 MOMENROF2 2.
+      @1715 DADSTAF1 2.
+      @1717 DADLIVF1 2.
+      @1719 DADLANF1 2.
+      @1721 DADSPEAF1 2.
+      @1723 DADBORF1 2.
+      @1725 DHISPAF1 2.
+      @1727 DWHITF1 2.
+      @1729 DBLACF1 2.
+      @1731 DAMINF1 2.
+      @1733 DASIAF1 2.
+      @1735 DPACF1 2.
+      @1737 DRACEOTF1 2.
+      @1739 DADGRADF1 2.
+      @1741 DADGRAF11 2.
+      @1743 DADGRAF21 2.
+      @1745 DADVOTEF1 2.
+      @1747 DADDIPF1 2.
+      @1749 DADWORF1 2.
+      @1751 DADHOURF1 2.
+      @1753 DADMTHF1 2.
+      @1755 DADLOOF1 2.
+      @1757 DADAGNF1 2.
+      @1759 DADEMPF1 2.
+      @1761 DADREF1 2.
+      @1763 DADANSAF1 2.
+      @1765 DADENROF1 2.
+      @1767 FOINTHF 2.
+      @1769 HWELFTAF 2.
+      @1771 HWELFSF 2.
+      @1773 HWIF 2.
+      @1775 HFOODSF 2.
+      @1777 HMEDICAF 2.
+      @1779 HCHIF 2.
+      @1781 HSECF8 2.
+      @1783 H3YRMOVF 2.
+      @1785 HINCMRNF 2.
+      @1787 HINCM50F 2.
+      @1789 HINCOMF 2.
+      ;
+
+   IF (MAINRSLT EQ "CN") AND 
+      (AGE2006 EQ 3 OR 
+       AGE2006 EQ 4 OR 
+       AGE2006 EQ 5 OR 
+       AGE2006 EQ 6) AND 
+      (SEX EQ 1 OR 
+       SEX EQ 2) AND 
+      (CPNNOW EQ 1 OR 
+       CPNNOW EQ 2) AND 
+      (CHISPAN EQ 1 OR 
+       CHISPAN EQ 2) AND 
+      (CWHITE EQ 1 OR 
+       CWHITE EQ 2) AND 
+      (CBLACK EQ 1 OR 
+       CBLACK EQ 2) AND 
+      (CAMIND EQ 1 OR 
+       CAMIND EQ 2) AND 
+      (CASIAN EQ 1 OR 
+       CASIAN EQ 2) AND 
+      (CPACI EQ 1 OR 
+       CPACI EQ 2) AND 
+      (CRACEOTH EQ 1 OR 
+       CRACEOTH EQ 2) AND 
+      (ALLGRADE EQ "0" OR 
+       ALLGRADE EQ "N" OR 
+       ALLGRADE EQ "U") AND 
+      (RACEETHN EQ 1 OR 
+       RACEETHN EQ 2 OR 
+       RACEETHN EQ 3 OR 
+       RACEETHN EQ 4);
+
+   label
+      BASMID = "UNIQUE CHILD IDENTIFIER"
+      BASEID = "HOUSEHOLD ID NUMBER"
+      MAINRSLT = "RESULT CODE FOR INTERVIEW"
+      PATH = "INTERVIEW PATH"
+      ENGLSPAN = "INTERVIEW IN ENGLISH OR SPANISH"
+      AGE2006 = "CHILD'S AGE AS OF DEC 31, 2006"
+      SEX = "CHILD'S SEX"
+      RESPAGE = "PARENT RESPONDENT'S AGE"
+      RESPSEX = "PARENT RESPONDENT'S SEX"
+      RESRELN = "PARENT R'S RELATIONSHIP TO CHILD"
+      MOMAGE1 = "MOM'S AGE - 1"
+      MOMTYPE1 = "SPECIFIC RELAT OF MOM TO CHILD - 1"
+      MOMAGE2 = "MOM'S AGE - 2"
+      MOMTYPE2 = "SPECIFIC RELAT OF MOM TO CHILD - 2"
+      DADAGE1 = "DAD'S AGE - 1"
+      DADTYPE1 = "SPECIFIC RELAT OF FATHER TO CHILD - 1"
+      DADAGE2 = "DAD'S AGE - 2"
+      DADTYPE2 = "SPECIFIC RELAT OF FATHER TO CHILD - 2"
+      AGE1 = "O/HH MEM - #1'S AGE"
+      SEX1 = "O/HH MEM - #1'S SEX"
+      RELATN1 = "O/HH MEM - #1'S RELATION TO CHILD"
+      AGE2 = "O/HH MEM - #2'S AGE"
+      SEX2 = "O/HH MEM - #2'S SEX"
+      RELATN2 = "O/HH MEM - #2'S RELATION TO CHILD"
+      AGE3 = "O/HH MEM - #3'S AGE"
+      SEX3 = "O/HH MEM - #3'S SEX"
+      RELATN3 = "O/HH MEM - #3'S RELATION TO CHILD"
+      AGE4 = "O/HH MEM - #4'S AGE"
+      SEX4 = "O/HH MEM - #4'S SEX"
+      RELATN4 = "O/HH MEM - #4'S RELATION TO CHILD"
+      AGE5 = "O/HH MEM - #5'S AGE"
+      SEX5 = "O/HH MEM - #5'S SEX"
+      RELATN5 = "O/HH MEM - #5'S RELATION TO CHILD"
+      AGE6 = "O/HH MEM - #6'S AGE"
+      SEX6 = "O/HH MEM - #6'S SEX"
+      RELATN6 = "O/HH MEM - #6'S RELATION TO CHILD"
+      CDOBMM = "PA1-MONTH OF BIRTH"
+      CDOBYY = "PA1-YEAR OF BIRTH"
+      CSPEAK = "PA6-LANG CHILD SPEAKS MOST AT HOME"
+      RESPEAK = "PA7-LANG RESP SPEAKS MOST AT HOME"
+      ENROLL = "PB2-CHILD ENROLLED/ATTENDING SCHOOL"
+      HOMESCHL = "PB3-CHILD BEING SCHOOLED AT HOME"
+      HOMEALL = "PB5-FULL OR PARTIAL HOME SCHOOL"
+      HOMSCHR = "PB6-HRS/WK HOME SCHOOLED CHILD IN SCHOOL"
+      HOMSCFLG = "HOME SCHOOL FLAG/ATTENDS SCHOOL 9+ HRS"
+      GRADE = "PB7-GRADE/YR CHILD IS ATTENDING"
+      GRADEEQ = "PB8-GRADE EQUIV/HOME SCHOOL/SP ED/UNGRD"
+      CPNNOW = "PD1-CHILD ATTENDS CTR BSD PROGRAM"
+      CPNEVER = "PD2-CHILD EVER GONE TO CTR BSD PROGRAM"
+      CPHRS = "PD3-# HRS/WK ATTENDS PROGRAM"
+      CPVISIT = "PD4-# OF VISITS TO PROGRAM"
+      PCEVRHD = "PD5-CHILD EVER ATTEND (EARLY) HEAD START"
+      DPCOLOR = "PE1-CHILD CAN IDENTIFY COLORS"
+      DPLETTER = "PE2-CHILD RECOGNIZES LETTERS"
+      DPCOUNT = "PE3-HOW HIGH CHILD CAN COUNT"
+      DPNAME = "PE4-CHILD CAN WRITE FIRST NAME"
+      DPRHYME = "PE5-CHILD CAN RHYME WORDS"
+      DPSTSND = "PE6-CHILD CAN RECOG BEG SOUNDS OF WORDS"
+      DPPENCIL = "PE7-CHILD HOLDS A PENCIL"
+      DPFIDGET = "PE8-CHILD FIDGETING VS OTHER CHILDREN"
+      DPSPEAK = "PE9-CHILD SPEECH UNDERSTOOD BY OTHERS"
+      KPSTART = "PF1-WHEN CHILD TO START KINDERGARTEN"
+      KPENROLL = "PF2-WHEN ENROLL CHILD IN KINDERGARTEN"
+      SEENJOY = "PH1-CHILD ENJOYS SCHOOL"
+      SEDOWELL = "PH6-# TIMES SCHL CNT ABT WHAT DOING WELL"
+      HABOOKS = "PN1-# OF BOOKS CHILD HAS"
+      FOREADTO = "PN2-TIMES READ TO CHILD PAST WK"
+      MOTHERFG = "PN3-MOTHER/FG READ CHILD PAST WK"
+      FATHERMG = "PN3-FATHER/MG READ CHILD PAST WK"
+      SISBRO = "PN3-SISTER/BROTHER READ CHILD PAST WK"
+      ANOTADLT = "PN3-ANOTHER ADLT HH READ CHILD PAST WK"
+      SOMEONEL = "PN3-SOMEONE ELSE READ CHILD PAST WK"
+      FORDDAY = "PN4-HOW MANY MINUTES READ CHILD PER DAY"
+      FOPICTR = "PN5A-HOW OFT STOP READ ASK ABOUT PICTURE"
+      FOLETTR = "PN5B-HOW OFT STOP READ POINT OUT LTRS"
+      FOCHREAD = "PN5C-HOW OFT ASK CHILD READ SAME TIME"
+      FOTLKSTR = "PN5D-HOW OFT TALK ABOUT STORY WHEN DONE"
+      HASTORY = "PN6-CAN CHILD READ STORY BOOKS ON OWN"
+      HAWORDS = "PN7-DOES CHILD READ OR PRTND READ WORDS"
+      HAPRETND = "PN8-DOES CHILD PRETEND TO READ BOOKS"
+      FOCHLRD = "PN9-# TIMES PST WK CHILD READ TO FAM MBR"
+      HALEAPPD = "PN10-ANY ELECTR PRODS HELP CHILD READ"
+      FOSTORY1 = "PN11A-TOLD CHILD STORY PAST WK"
+      FOWORDS = "PN11B-TGHT CHILD LTS/WDS/NBS PAST WK"
+      FOMUSIC = "PN11C-TGHT CHILD SONGS/MUSIC PAST WK"
+      FOCRAFT1 = "PN11D-DID ARTS/CRAFTS WITH CHILD PAST WK"
+      FOSPORT1 = "PN11E-PLAYED SPORTS WITH CHILD PAST WK"
+      FOGAMES1 = "PN11F-PLAYED GAMES WITH CHILD PAST WK"
+      FODINNER = "PN14-# TIMES FAM ATE TOGETHER PAST WK"
+      FOLIBRAR = "PN15A-VISITED LIBRARY W/CHILD PST MO"
+      FOBOOKST = "PN15B-VISITED A BOOKSTORE W/CHILD PST MO"
+      FOCONCRT = "PN15C-WENT TO PLAY/CNCRT/SHOW PST MO"
+      FOMUSEUM = "PN15D-VISITED ART GALLERY/MUSEUM PST MO"
+      FOZOO = "PN15E-VISITED ZOO/AQUARIUM PAST MO"
+      FOGROUP = "PN15F-ATTD EVENT SPON COMM/RELIG/ETH GRP"
+      FOSPRTEV = "PN15G-ATTD ATHL EVENT CHILD NOT PLAYER"
+      TVHRWKDY = "PN16-CHILD WTCH TV/VIDS TYP WKDY"
+      TVWKDYNU = "PN17-HW MANY HRS CHILD WTCH TYP WKDY"
+      TVHRWKND = "PN18-CHILD WTCH TV/VIDS TYP WKND DAY"
+      TVWKNDNU = "PN19-HW MANY HRS CHILD WTCH TYP WKND DAY"
+      ABCCBSCW = "PN20-ABC, CBS, NBC, FOX, CW (UPN/WB)"
+      ANIMPLAN = "PN20-ANIMAL PLANET"
+      CARTOONS = "PN20-BOOMERANG/CARTOON NETWORK/NICKTOONS"
+      CHRSTNCH = "PN20-CHRSTN CHNL (E.G. CTN, CORNERSTONE)"
+      DISCOVER = "PN20-DISCOVERY CHANNEL/KIDS"
+      DISNEYCH = "PN20-DISNEY CHANNEL"
+      SPORTSCH = "PN20-SPORTS CHANNEL (E.G. ESPN, SOCCER)"
+      FAMILYCH = "PN20-FAMILY CHANNEL"
+      MTVVH1 = "PN20-MTV/VH-1"
+      NICKELOD = "PN20-NICKELODEON/NICK-AT-NITE/NICK JR"
+      NEWSNET = "PN20-NEWS NETWORK (E.G. CNN, FOX NEWS)"
+      NOGGIN = "PN20-NOGGIN"
+      PBSSPRT = "PN20-PBS/PBS SPROUT/PBS KIDS"
+      SPNLNGCH = "PN20-SPAN LNG CHNL (E.G. GALAV., TELEM.)"
+      LEARNCH = "PN20-THE LEARNING CHANNEL"
+      TVLAND = "PN20-TV LAND"
+      HISTCHAN = "PN20-HISTORY CHANNEL"
+      FOODNET = "PN20-FOOD/COOKING NETWORK"
+      TVOTHER = "PN20-ANOTHER CHANNEL"
+      VIDNOTV = "PN20-CHILD ONLY WATCHES VIDEOS, NOT TV"
+      TVCHMOST = "PN21-CHANNEL CHILD WATCHES MOST OFTEN"
+      FORTVPRG = "PN22-FAM RULES ABT TV WATCHING FOR CHILD"
+      PARREAD = "PN25-HOW OFT ADLT READ IN HH IN PST WK"
+      RPALPHA = "PO1A-IMPORTANCE TEACH CHILD ALPHABET"
+      RPSHARE = "PO1B-IMPORTANCE TEACH CHILD ABT SHARING"
+      RPREAD = "PO1C-IMPORTANCE TEACH CHILD TO READ"
+      RPNUMB = "PO1D-IMPORTANCE TEACH CHILD NUMBERS"
+      RPPENCIL = "PO1E-IMPORTANCE SHOW CHILD HOLD PENCIL"
+      RPDISCP = "PO1F-IMPORTANCE DISCP CHILD WHN MISBEHAV"
+      HDBRTHW5 = "PQ1-CHILD WEIGHED LT 5 1/2 PNDS AT BIRTH"
+      HDBRTHW3 = "PQ2-CHILD WEIGHED LT 3 PNDS AT BIRTH"
+      HDPRMTR4 = "PQ3-CHILD BORN MORE THAN 4 WKS PREMATURE"
+      HDHOSP = "PQ4-# DAYS CHILD IN HOSP AFTER BORN"
+      HDIFSP = "PQ5-CHILD RCVD SVCS, HAD IFSP BEF AGE 3"
+      HDHEALTH = "PQ6-RATING OF CHILD'S HEALTH"
+      HDCHINS = "PQ7-CHILD COVERED BY HEALTH INSURANCE"
+      HDWEIGHT = "PQ8-DOCTOR EVR EXPR CONCERN CHILD'S WGHT"
+      HDWEIGHT2 = "PQ9-CONCERN ABT BEING OVER OR UNDER WGHT"
+      HDLEARN = "PQ10A-CHILD HAS SPEC LRNING DISABILTY"
+      HDMENRET = "PQ10B-CHILD HAS MENTAL RETARDATION"
+      HDSPEECH = "PQ10C-CHILD HAS SPEECH OR LANGUAGE DELAY"
+      HDDISTRB = "PQ10D-CHILD HAS EMOTIONAL DISTURBANCE"
+      HDDEAFIM = "PQ10E-CHILD HAS DEAFNESS/HEARING PROBLEM"
+      HDBLIND = "PQ10F-CHILD HAS BLINDNESS/VISUAL PROBLEM"
+      HDORTHO = "PQ10G-CHILD HAS ORTHOPEDIC IMPAIRMENT"
+      HDAUTISM = "PQ10H-CHILD HAS AUTISM"
+      HDADD = "PQ10I-CHILD HAS ADD OR ADHD"
+      HDPDD = "PQ10J-CHILD W/ PERVAS DEVLPMNTL DISORDR"
+      HDOTHER = "PQ10K-CHILD HAS OTHR HLTH PROB 6 MOS+"
+      HDSCHL = "PQ11A-RECEIVES SERVICES FROM SCHOOL DIST"
+      HDGOVT = "PQ11B-RECEIVES ST/LOCL/SOCL SERVICES"
+      HDDOCTOR = "PQ11C-RECEIVES SERVICES FROM DR/CLINIC"
+      HDSOURCE = "PQ11D-RECEIVES SERVICES FRM OTHR SRC"
+      HDIEP = "PQ12-RECEIVES SERVICES THRU IEP"
+      HDDEVIEP = "PQ13-HH WORKED WITH SCHL DEVELOP IEP"
+      HDSPCLED = "PQ14-ENROLLED IN SPECIAL ED"
+      HDCOMMU = "PQ15A-SATISFACTION W/ SCHOOL COMMUNICATN"
+      HDTCHR = "PQ15B-SATISFACTION WITH SPCL NEEDS TCHR"
+      HDACCOM = "PQ15C-SAT W/ SCHL SPCL NEEDS ACCOMOD"
+      HDCOMMIT = "PQ15D-SAT W/ SCHL COMMIT HELP CHILD LRN"
+      HDAFFECT = "PQ16-DISABILITY AFFECT ABILITY TO LEARN"
+      CBORNUS = "PR1-CHILD'S BIRTH COUNTRY"
+      CMOVEAGE = "PR2-AGE WHEN CHILD MOVED TO US"
+      CHISPAN = "PR3-CHILD IS OF HISPANIC ORIGIN"
+      CWHITE = "PR4-CHILD IS WHITE"
+      CBLACK = "PR4-CHILD IS BLACK OR AFRICAN AMERICAN"
+      CAMIND = "PR4-CHILD IS AMER INDIAN/ALASKAN NATIVE"
+      CASIAN = "PR4-CHILD IS ASIAN"
+      CPACI = "PR4-CHILD IS NATV HAWAIIAN/PACIF ISLNDR"
+      CRACEOTH = "PR4-CHILD'S RACE"
+      MOMNEW1 = "PS1-MOM'S AGE WHN FRST BECAME MOTHER - 1"
+      MOMSTAT1 = "PS2-MOM'S MARITAL STATUS - 1"
+      MOMLIVW1 = "PS3-MOM CURRENTLY LIVE W/ PARTNER - 1"
+      MOMLANG1 = "PS4-FIRST LANGUAGE SPOKEN BY MOM - 1"
+      MOMSPEAK1 = "PS5-LANG SPOKEN MOST AT HOME BY MOM - 1"
+      MOMBORN1 = "PS6-COUNTRY MOM WAS BORN IN - 1"
+      MHISPAN1 = "PS7-MOM IS HISPANIC - 1"
+      MWHITE1 = "PS8-MOM IS WHITE - 1"
+      MBLACK1 = "PS8-MOM IS BLACK OR AFRICAN AMERICAN - 1"
+      MAMIND1 = "PS8-MOM IS AMER INDIAN/ALASKAN NAT - 1"
+      MASIAN1 = "PS8-MOM IS ASIAN - 1"
+      MPACI1 = "PS8-MOM IS NATV HAWAIIAN/PACIF ISLDR - 1"
+      MRACEOTH1 = "PS8-MOM'S RACE - 1"
+      MOMGRADE1 = "PS9-HIGHEST GRADE/YR MOM COMPLETED - 1"
+      MOMGRAD11 = "PS9-ACTUAL GRADE 0-8 MOM COMPLETED - 1"
+      MOMGRAD21 = "PS9-ACTUAL GRADE 9-11 MOM COMPLETED - 1"
+      MOMVOTEC1 = "PS10-MOM HAS VOC/TECH DIPL - 1"
+      MOMDIPL1 = "PS11-MOM HAS HS DIPLOMA OR GED - 1"
+      MOMWORK1 = "PS12-MOM WORKED FOR PAY LAST WEEK - 1"
+      MOMLEAVE1 = "PS13-MOM ON LEAVE OR VACATION LST WK - 1"
+      MOMHOURS1 = "PS14-HRS PER WEEK MOM WORKS FOR PAY - 1"
+      MOMMTHS1 = "PS15-MONTHS MOM WORKED IN PAST YEAR - 1"
+      MOMLOOK1 = "PS16-MOM LOOKING FOR WORK PAST 4 WKS - 1"
+      MOMAGN1 = "PS17A-MOM CHECKED WITH EMPLOY AGENCY - 1"
+      MOMEMPL1 = "PS17B-MOM CHECKED W/EMPLYER DIRECTLY - 1"
+      MOMREL1 = "PS17C-MOM CHECKED W/FRIENDS/RELS - 1"
+      MOMANSAD1 = "PS17D-MOM PLCD/ANSW ADS/SENT RESUME - 1"
+      MOMENROL1 = "PS18-MOM ENROLLED IN SCHOOL - 1"
+      MOMNEW2 = "PS1-MOM'S AGE WHN FRST BECAME MOTHER - 2"
+      MOMSTAT2 = "PS2-MOM'S MARITAL STATUS - 2"
+      MOMLIVW2 = "PS3-MOM CURRENTLY LIVE W/ PARTNER - 2"
+      MOMLANG2 = "PS4-FIRST LANGUAGE SPOKEN BY MOM - 2"
+      MOMSPEAK2 = "PS5-LANG SPOKEN MOST AT HOME BY MOM - 2"
+      MOMBORN2 = "PS6-COUNTRY MOM WAS BORN IN - 2"
+      MHISPAN2 = "PS7-MOM IS HISPANIC - 2"
+      MWHITE2 = "PS8-MOM IS WHITE - 2"
+      MBLACK2 = "PS8-MOM IS BLACK OR AFRICAN AMERICAN - 2"
+      MAMIND2 = "PS8-MOM IS AMER INDIAN/ALASKAN NAT - 2"
+      MASIAN2 = "PS8-MOM IS ASIAN - 2"
+      MPACI2 = "PS8-MOM IS NATV HAWAIIAN/PACIF ISLDR - 2"
+      MRACEOTH2 = "PS8-MOM'S RACE - 2"
+      MOMGRADE2 = "PS9-HIGHEST GRADE/YR MOM COMPLETED - 2"
+      MOMGRAD12 = "PS9-ACTUAL GRADE 0-8 MOM COMPLETED - 2"
+      MOMGRAD22 = "PS9-ACTUAL GRADE 9-11 MOM COMPLETED - 2"
+      MOMVOTEC2 = "PS10-MOM HAS VOC/TECH DIPL - 2"
+      MOMDIPL2 = "PS11-MOM HAS HS DIPLOMA OR GED - 2"
+      MOMWORK2 = "PS12-MOM WORKED FOR PAY LAST WEEK - 2"
+      MOMLEAVE2 = "PS13-MOM ON LEAVE OR VACATION LST WK - 2"
+      MOMHOURS2 = "PS14-HRS PER WEEK MOM WORKS FOR PAY - 2"
+      MOMMTHS2 = "PS15-MONTHS MOM WORKED IN PAST YEAR - 2"
+      MOMLOOK2 = "PS16-MOM LOOKING FOR WORK PAST 4 WKS - 2"
+      MOMAGN2 = "PS17A-MOM CHECKED WITH EMPLOY AGENCY - 2"
+      MOMEMPL2 = "PS17B-MOM CHECKED W/EMPLYER DIRECTLY - 2"
+      MOMREL2 = "PS17C-MOM CHECKED W/FRIENDS/RELS - 2"
+      MOMANSAD2 = "PS17D-MOM PLCD/ANSW ADS/SENT RESUME - 2"
+      MOMENROL2 = "PS18-MOM ENROLLED IN SCHOOL - 2"
+      DADSTAT1 = "PT1-DAD'S MARITAL STATUS - 1"
+      DADLIVW1 = "PT2-DAD CURRENTLY LIVE W/ PARTNER - 1"
+      DADLANG1 = "PT3-FIRST LANGUAGE SPOKEN BY DAD - 1"
+      DADSPEAK1 = "PT4-LANG SPOKEN MOST AT HOME BY DAD - 1"
+      DADBORN1 = "PT5-COUNTRY DAD WAS BORN IN - 1"
+      DHISPAN1 = "PT6-DAD IS HISPANIC - 1"
+      DWHITE1 = "PT7-DAD IS WHITE - 1"
+      DBLACK1 = "PT7-DAD IS BLACK OR AFRICAN AMERICAN - 1"
+      DAMIND1 = "PT7-DAD IS AMER INDIAN/ALASKAN NAT - 1"
+      DASIAN1 = "PT7-DAD IS ASIAN - 1"
+      DPACI1 = "PT7-DAD IS NATV HAWAIIAN/PACIF ISLDR - 1"
+      DRACEOTH1 = "PT7-DAD'S RACE - 1"
+      DADGRADE1 = "PT8-HIGHEST GRADE/YR DAD COMPLETED - 1"
+      DADGRAD11 = "PT8-ACTUAL GRADE 0-8 DAD COMPLETED - 1"
+      DADGRAD21 = "PT8-ACTUAL GRADE 9-11 DAD COMPLETED - 1"
+      DADVOTEC1 = "PT9-DAD HAS VOC/TECH DIPL - 1"
+      DADDIPL1 = "PT10-DAD HAS HS DIPLOMA OR GED - 1"
+      DADWORK1 = "PT11-DAD WORKED FOR PAY LAST WEEK - 1"
+      DADLEAVE1 = "PT12-DAD ON LEAVE OR VACATION LST WK - 1"
+      DADHOURS1 = "PT13-HRS PER WEEK DAD WORKS FOR PAY - 1"
+      DADMTHS1 = "PT14-MONTHS DAD WORKED IN PAST YEAR - 1"
+      DADLOOK1 = "PT15-DAD LOOKING FOR WORK PAST 4 WKS - 1"
+      DADAGN1 = "PT16A-DAD CHECKED WITH EMPLOY AGENCY - 1"
+      DADEMPL1 = "PT16B-DAD CHECKED W/EMPLYER DIRECTLY - 1"
+      DADREL1 = "PT16C-DAD CHECKED W/FRIENDS/RELS - 1"
+      DADANSAD1 = "PT16D-DAD PLCD/ANSW ADS/SENT RESUME - 1"
+      DADENROL1 = "PT17-DAD ENROLLED IN SCHOOL - 1"
+      DADSTAT2 = "PT1-DAD'S MARITAL STATUS - 2"
+      DADLIVW2 = "PT2-DAD CURRENTLY LIVE W/ PARTNER - 2"
+      DADLANG2 = "PT3-FIRST LANGUAGE SPOKEN BY DAD - 2"
+      DADSPEAK2 = "PT4-LANG SPOKEN MOST AT HOME BY DAD - 2"
+      DADBORN2 = "PT5-COUNTRY DAD WAS BORN IN - 2"
+      DHISPAN2 = "PT6-DAD IS HISPANIC - 2"
+      DWHITE2 = "PT7-DAD IS WHITE - 2"
+      DBLACK2 = "PT7-DAD IS BLACK OR AFRICAN AMERICAN - 2"
+      DAMIND2 = "PT7-DAD IS AMER INDIAN/ALASKAN NAT - 2"
+      DASIAN2 = "PT7-DAD IS ASIAN - 2"
+      DPACI2 = "PT7-DAD IS NATV HAWAIIAN/PACIF ISLDR - 2"
+      DRACEOTH2 = "PT7-DAD'S RACE - 2"
+      DADGRADE2 = "PT8-HIGHEST GRADE/YR DAD COMPLETED - 2"
+      DADGRAD12 = "PT8-ACTUAL GRADE 0-8 DAD COMPLETED - 2"
+      DADGRAD22 = "PT8-ACTUAL GRADE 9-11 DAD COMPLETED - 2"
+      DADVOTEC2 = "PT9-DAD HAS VOC/TECH DIPL - 2"
+      DADDIPL2 = "PT10-DAD HAS HS DIPLOMA OR GED - 2"
+      DADWORK2 = "PT11-DAD WORKED FOR PAY LAST WEEK - 2"
+      DADLEAVE2 = "PT12-DAD ON LEAVE OR VACATION LST WK - 2"
+      DADHOURS2 = "PT13-HRS PER WEEK DAD WORKS FOR PAY - 2"
+      DADMTHS2 = "PT14-MONTHS DAD WORKED IN PAST YEAR - 2"
+      DADLOOK2 = "PT15-DAD LOOKING FOR WORK PAST 4 WKS - 2"
+      DADAGN2 = "PT16A-DAD CHECKED WITH EMPLOY AGENCY - 2"
+      DADEMPL2 = "PT16B-DAD CHECKED W/EMPLYER DIRECTLY - 2"
+      DADREL2 = "PT16C-DAD CHECKED W/FRIENDS/RELS - 2"
+      DADANSAD2 = "PT16D-DAD PLCD/ANSW ADS/SENT RESUME - 2"
+      DADENROL2 = "PT17-DAD ENROLLED IN SCHOOL - 2"
+      FOINTHM = "PU1-ACCESS TO INTERNET AT HOME"
+      HWELFTAN = "PU3A-FAMILY RECD TANF PAST 12 MO"
+      HWELFST = "PU3B-FAMILY RECD ST WELF PAST 12 MO"
+      HWIC = "PU3C-FAMILY RECD WIC PAST 12 MONTHS"
+      HFOODST = "PU3D-FAMILY RECD FOOD STMPS PST 12 MO"
+      HMEDICAD = "PU3E-FAMILY RECD MEDICAID PAST 12 MO"
+      HCHIP = "PU3F-FAMILY RECD CHIP PAST 12 MO"
+      HSECN8 = "PU3G-FAM RECVD SEC8 HOUSE ASST PST 12 MO"
+      H3YRMOVE = "PU4-# TIMES MOVED OVER PAST 3 YEARS"
+      HINCMRNG = "PU5-TOTAL HH INCOME BELOW/ABOVE $25K"
+      HINCM50K = "PU5OV1-TOTAL HH INCOME BELOW/ABOVE $50K"
+      HINCOME = "PU5OV2-TOTAL HH INCOME RANGE"
+      ALLGRADE = "D-CHILD'S ENROLLMENT AND GRADE/EQUIV"
+      CENREG = "D-CENSUS REGION"
+      DADEDUC1 = "D-ED ATTAINMT/CHILD'S RES DAD/GUARD - 1"
+      DADEMPLD1 = "D-WORK STAT-DAD/STEP/FSTR DAD/GUARD - 1"
+      DADEDUC2 = "D-ED ATTAINMT/CHILD'S RES DAD/GUARD - 2"
+      DADEMPLD2 = "D-WORK STAT-DAD/STEP/FSTR DAD/GUARD - 2"
+      DISABLTY = "D-CHILD CURRENTLY HAS A DISABILITY"
+      DISBLTY2 = "D-CHILD HAS DISABLTY INCL AUTISM/ADD/PDD"
+      FAMILY = "D-FAMILY TYPE"
+      FAMILY07 = "D-FAMILY TYPE INCL SAME SEX PRNTS/PRTNRS"
+      HH18OVER = "D-NUMBER OF HH MEMBERS AGE 18 AND OLDER"
+      HHDAD1 = "D-DAD LIVES IN HOUSEHOLD - 1"
+      HHDAD2 = "D-DAD LIVES IN HOUSEHOLD - 2"
+      HHMOM1 = "D-MOM LIVES IN HOUSEHOLD - 1"
+      HHMOM2 = "D-MOM LIVES IN HOUSEHOLD - 2"
+      HHPARN1 = "D-PARENTS IN HOUSEHOLD"
+      HHPARN07 = "D-PARENTS HH INCL SAME SEX PRNTS/PRTNRS"
+      HHTOTAL = "D-TOTAL NUMBER OF HH MEMBERS"
+      HHUNDR6 = "D-# OF HH MMBRS YOUNGER THAN AGE 6"
+      HHUNDR10 = "D-# OF HH MMBRS YOUNGER THAN AGE 10"
+      HHUNDR13 = "D-# OF HH MMBRS YOUNGER THAN AGE 13"
+      HHUNDR18 = "D-# OF HH MMBRS YOUNGER THAN AGE 18"
+      HHUNDR21 = "D-# OF HH MMBRS YOUNGER THAN AGE 21"
+      LANGUAGE07 = "D-ENGL SPOKE MOST PRNTS INC SAME SX/PRTS"
+      MOMEDUC1 = "D-ED ATTAINMT/CHILD'S RES MOM/GUARD - 1"
+      MOMEMPLD1 = "D-WORK STAT-MOM/STEP/FSTR MOM/GUARD - 1"
+      MOMFTFY1 = "D-MOM/GUARD WORKS FULL TIME - 1"
+      MOMEDUC2 = "D-ED ATTAINMT/CHILD'S RES MOM/GUARD - 2"
+      MOMEMPLD2 = "D-WORK STAT-MOM/STEP/FSTR MOM/GUARD - 2"
+      MOMFTFY2 = "D-MOM/GUARD WORKS FULL TIME - 2"
+      NUMSIBS = "D-NUMBER OF CHILD'S SIBLINGS"
+      PARGRADE07 = "D-HIGHEST LVL PRNT/GUARD ED INC SAME S/P"
+      RACEETHN = "D-RACE-ETHNICITY OF CHILD"
+      RACEETH2 = "D-DETAILED RACE-ETHNICITY OF CHILD"
+      TVHOURS = "D-# HOURS CHILD WATCHES TV/VIDEOS TYP WK"
+      ZIP18PO2 = "D-PERCENT UNDER 18 BELOW POVERTY LINE"
+      ZIPBLHI2 = "D-PERCENT BLACK OR HISPANIC"
+      ZIPLOCL = "D-ZIP-CODE CLASSIF BY COMMUNITY TYPE"
+      FRWT = "FINAL SR INTV WEIGHT"
+      FRWT1 = "FINAL SR INTV WEIGHT, REPL1"
+      FRWT2 = "FINAL SR INTV WEIGHT, REPL2"
+      FRWT3 = "FINAL SR INTV WEIGHT, REPL3"
+      FRWT4 = "FINAL SR INTV WEIGHT, REPL4"
+      FRWT5 = "FINAL SR INTV WEIGHT, REPL5"
+      FRWT6 = "FINAL SR INTV WEIGHT, REPL6"
+      FRWT7 = "FINAL SR INTV WEIGHT, REPL7"
+      FRWT8 = "FINAL SR INTV WEIGHT, REPL8"
+      FRWT9 = "FINAL SR INTV WEIGHT, REPL9"
+      FRWT10 = "FINAL SR INTV WEIGHT, REPL10"
+      FRWT11 = "FINAL SR INTV WEIGHT, REPL11"
+      FRWT12 = "FINAL SR INTV WEIGHT, REPL12"
+      FRWT13 = "FINAL SR INTV WEIGHT, REPL13"
+      FRWT14 = "FINAL SR INTV WEIGHT, REPL14"
+      FRWT15 = "FINAL SR INTV WEIGHT, REPL15"
+      FRWT16 = "FINAL SR INTV WEIGHT, REPL16"
+      FRWT17 = "FINAL SR INTV WEIGHT, REPL17"
+      FRWT18 = "FINAL SR INTV WEIGHT, REPL18"
+      FRWT19 = "FINAL SR INTV WEIGHT, REPL19"
+      FRWT20 = "FINAL SR INTV WEIGHT, REPL20"
+      FRWT21 = "FINAL SR INTV WEIGHT, REPL21"
+      FRWT22 = "FINAL SR INTV WEIGHT, REPL22"
+      FRWT23 = "FINAL SR INTV WEIGHT, REPL23"
+      FRWT24 = "FINAL SR INTV WEIGHT, REPL24"
+      FRWT25 = "FINAL SR INTV WEIGHT, REPL25"
+      FRWT26 = "FINAL SR INTV WEIGHT, REPL26"
+      FRWT27 = "FINAL SR INTV WEIGHT, REPL27"
+      FRWT28 = "FINAL SR INTV WEIGHT, REPL28"
+      FRWT29 = "FINAL SR INTV WEIGHT, REPL29"
+      FRWT30 = "FINAL SR INTV WEIGHT, REPL30"
+      FRWT31 = "FINAL SR INTV WEIGHT, REPL31"
+      FRWT32 = "FINAL SR INTV WEIGHT, REPL32"
+      FRWT33 = "FINAL SR INTV WEIGHT, REPL33"
+      FRWT34 = "FINAL SR INTV WEIGHT, REPL34"
+      FRWT35 = "FINAL SR INTV WEIGHT, REPL35"
+      FRWT36 = "FINAL SR INTV WEIGHT, REPL36"
+      FRWT37 = "FINAL SR INTV WEIGHT, REPL37"
+      FRWT38 = "FINAL SR INTV WEIGHT, REPL38"
+      FRWT39 = "FINAL SR INTV WEIGHT, REPL39"
+      FRWT40 = "FINAL SR INTV WEIGHT, REPL40"
+      FRWT41 = "FINAL SR INTV WEIGHT, REPL41"
+      FRWT42 = "FINAL SR INTV WEIGHT, REPL42"
+      FRWT43 = "FINAL SR INTV WEIGHT, REPL43"
+      FRWT44 = "FINAL SR INTV WEIGHT, REPL44"
+      FRWT45 = "FINAL SR INTV WEIGHT, REPL45"
+      FRWT46 = "FINAL SR INTV WEIGHT, REPL46"
+      FRWT47 = "FINAL SR INTV WEIGHT, REPL47"
+      FRWT48 = "FINAL SR INTV WEIGHT, REPL48"
+      FRWT49 = "FINAL SR INTV WEIGHT, REPL49"
+      FRWT50 = "FINAL SR INTV WEIGHT, REPL50"
+      FRWT51 = "FINAL SR INTV WEIGHT, REPL51"
+      FRWT52 = "FINAL SR INTV WEIGHT, REPL52"
+      FRWT53 = "FINAL SR INTV WEIGHT, REPL53"
+      FRWT54 = "FINAL SR INTV WEIGHT, REPL54"
+      FRWT55 = "FINAL SR INTV WEIGHT, REPL55"
+      FRWT56 = "FINAL SR INTV WEIGHT, REPL56"
+      FRWT57 = "FINAL SR INTV WEIGHT, REPL57"
+      FRWT58 = "FINAL SR INTV WEIGHT, REPL58"
+      FRWT59 = "FINAL SR INTV WEIGHT, REPL59"
+      FRWT60 = "FINAL SR INTV WEIGHT, REPL60"
+      FRWT61 = "FINAL SR INTV WEIGHT, REPL61"
+      FRWT62 = "FINAL SR INTV WEIGHT, REPL62"
+      FRWT63 = "FINAL SR INTV WEIGHT, REPL63"
+      FRWT64 = "FINAL SR INTV WEIGHT, REPL64"
+      FRWT65 = "FINAL SR INTV WEIGHT, REPL65"
+      FRWT66 = "FINAL SR INTV WEIGHT, REPL66"
+      FRWT67 = "FINAL SR INTV WEIGHT, REPL67"
+      FRWT68 = "FINAL SR INTV WEIGHT, REPL68"
+      FRWT69 = "FINAL SR INTV WEIGHT, REPL69"
+      FRWT70 = "FINAL SR INTV WEIGHT, REPL70"
+      FRWT71 = "FINAL SR INTV WEIGHT, REPL71"
+      FRWT72 = "FINAL SR INTV WEIGHT, REPL72"
+      FRWT73 = "FINAL SR INTV WEIGHT, REPL73"
+      FRWT74 = "FINAL SR INTV WEIGHT, REPL74"
+      FRWT75 = "FINAL SR INTV WEIGHT, REPL75"
+      FRWT76 = "FINAL SR INTV WEIGHT, REPL76"
+      FRWT77 = "FINAL SR INTV WEIGHT, REPL77"
+      FRWT78 = "FINAL SR INTV WEIGHT, REPL78"
+      FRWT79 = "FINAL SR INTV WEIGHT, REPL79"
+      FRWT80 = "FINAL SR INTV WEIGHT, REPL80"
+      RPSU = "PSU FOR TAYLOR SERIES VAR EST - SR"
+      RSTRATUM = "STRATUM FOR TAYLOR SERIES VAR EST - SR"
+      RESPAGF = "IMPUTATION FLAG"
+      MOMAGF1 = "IMPUTATION FLAG"
+      MOMTYPF1 = "IMPUTATION FLAG"
+      MOMTYPF2 = "IMPUTATION FLAG"
+      DADAGF1 = "IMPUTATION FLAG"
+      DADTYPF1 = "IMPUTATION FLAG"
+      AGF1 = "IMPUTATION FLAG"
+      RELATF1 = "IMPUTATION FLAG"
+      AGF2 = "IMPUTATION FLAG"
+      RELATF2 = "IMPUTATION FLAG"
+      AGF3 = "IMPUTATION FLAG"
+      RELATF3 = "IMPUTATION FLAG"
+      AGF4 = "IMPUTATION FLAG"
+      AGF5 = "IMPUTATION FLAG"
+      RELATF6 = "IMPUTATION FLAG"
+      CDOBMF = "IMPUTATION FLAG"
+      CDOBYF = "IMPUTATION FLAG"
+      CSPEAF = "IMPUTATION FLAG"
+      RESPEAF = "IMPUTATION FLAG"
+      ENROLF = "IMPUTATION FLAG"
+      HOMESCHF = "IMPUTATION FLAG"
+      CPNNOF = "IMPUTATION FLAG"
+      CPNEVEF = "IMPUTATION FLAG"
+      CPHRF = "IMPUTATION FLAG"
+      CPVISIF = "IMPUTATION FLAG"
+      PCEVRHF = "IMPUTATION FLAG"
+      DPCOLOF = "IMPUTATION FLAG"
+      DPLETTEF = "IMPUTATION FLAG"
+      DPCOUNF = "IMPUTATION FLAG"
+      DPNAMF = "IMPUTATION FLAG"
+      DPRHYMF = "IMPUTATION FLAG"
+      DPSTSNF = "IMPUTATION FLAG"
+      DPPENCIF = "IMPUTATION FLAG"
+      DPFIDGEF = "IMPUTATION FLAG"
+      DPSPEAF = "IMPUTATION FLAG"
+      KPSTARF = "IMPUTATION FLAG"
+      KPENROLF = "IMPUTATION FLAG"
+      SEENJOF = "IMPUTATION FLAG"
+      SEDOWELF = "IMPUTATION FLAG"
+      HABOOKF = "IMPUTATION FLAG"
+      FOREADTF = "IMPUTATION FLAG"
+      MOTHERFF = "IMPUTATION FLAG"
+      FATHERMF = "IMPUTATION FLAG"
+      SISBRF = "IMPUTATION FLAG"
+      ANOTADLF = "IMPUTATION FLAG"
+      SOMEONEF = "IMPUTATION FLAG"
+      FORDDAF = "IMPUTATION FLAG"
+      FOPICTF = "IMPUTATION FLAG"
+      FOLETTF = "IMPUTATION FLAG"
+      FOCHREAF = "IMPUTATION FLAG"
+      FOTLKSTF = "IMPUTATION FLAG"
+      HASTORF = "IMPUTATION FLAG"
+      HAWORDF = "IMPUTATION FLAG"
+      HAPRETNF = "IMPUTATION FLAG"
+      FOCHLRF = "IMPUTATION FLAG"
+      HALEAPPF = "IMPUTATION FLAG"
+      FOSTORF1 = "IMPUTATION FLAG"
+      FOWORDF = "IMPUTATION FLAG"
+      FOMUSIF = "IMPUTATION FLAG"
+      FOCRAFF1 = "IMPUTATION FLAG"
+      FOSPORF1 = "IMPUTATION FLAG"
+      FOGAMEF1 = "IMPUTATION FLAG"
+      FODINNEF = "IMPUTATION FLAG"
+      FOLIBRAF = "IMPUTATION FLAG"
+      FOBOOKSF = "IMPUTATION FLAG"
+      FOCONCRF = "IMPUTATION FLAG"
+      FOMUSEUF = "IMPUTATION FLAG"
+      FOZOF = "IMPUTATION FLAG"
+      FOGROUF = "IMPUTATION FLAG"
+      FOSPRTEF = "IMPUTATION FLAG"
+      TVHRWKDF = "IMPUTATION FLAG"
+      TVWKDYNF = "IMPUTATION FLAG"
+      TVHRWKNF = "IMPUTATION FLAG"
+      TVWKNDNF = "IMPUTATION FLAG"
+      ABCCBSCF = "IMPUTATION FLAG"
+      ANIMPLAF = "IMPUTATION FLAG"
+      CARTOONF = "IMPUTATION FLAG"
+      CHRSTNCF = "IMPUTATION FLAG"
+      DISCOVEF = "IMPUTATION FLAG"
+      DISNEYCF = "IMPUTATION FLAG"
+      SPORTSCF = "IMPUTATION FLAG"
+      FAMILYCF = "IMPUTATION FLAG"
+      MTVVF1 = "IMPUTATION FLAG"
+      NICKELOF = "IMPUTATION FLAG"
+      NEWSNEF = "IMPUTATION FLAG"
+      NOGGIF = "IMPUTATION FLAG"
+      PBSSPRF = "IMPUTATION FLAG"
+      SPNLNGCF = "IMPUTATION FLAG"
+      LEARNCF = "IMPUTATION FLAG"
+      TVLANF = "IMPUTATION FLAG"
+      HISTCHAF = "IMPUTATION FLAG"
+      FOODNEF = "IMPUTATION FLAG"
+      TVOTHEF = "IMPUTATION FLAG"
+      VIDNOTF = "IMPUTATION FLAG"
+      TVCHMOSF = "IMPUTATION FLAG"
+      FORTVPRF = "IMPUTATION FLAG"
+      PARREAF = "IMPUTATION FLAG"
+      RPALPHF = "IMPUTATION FLAG"
+      RPSHARF = "IMPUTATION FLAG"
+      RPREAF = "IMPUTATION FLAG"
+      RPNUMF = "IMPUTATION FLAG"
+      RPPENCIF = "IMPUTATION FLAG"
+      RPDISCF = "IMPUTATION FLAG"
+      HDBRTHF5 = "IMPUTATION FLAG"
+      HDBRTHF3 = "IMPUTATION FLAG"
+      HDPRMTF4 = "IMPUTATION FLAG"
+      HDHOSF = "IMPUTATION FLAG"
+      HDIFSF = "IMPUTATION FLAG"
+      HDHEALTF = "IMPUTATION FLAG"
+      HDCHINF = "IMPUTATION FLAG"
+      HDWEIGHF = "IMPUTATION FLAG"
+      HDWEIGHF2 = "IMPUTATION FLAG"
+      HDLEARF = "IMPUTATION FLAG"
+      HDMENREF = "IMPUTATION FLAG"
+      HDSPEECF = "IMPUTATION FLAG"
+      HDDISTRF = "IMPUTATION FLAG"
+      HDDEAFIF = "IMPUTATION FLAG"
+      HDBLINF = "IMPUTATION FLAG"
+      HDORTHF = "IMPUTATION FLAG"
+      HDAUTISF = "IMPUTATION FLAG"
+      HDADF = "IMPUTATION FLAG"
+      HDPDF = "IMPUTATION FLAG"
+      HDOTHEF = "IMPUTATION FLAG"
+      HDSCHF = "IMPUTATION FLAG"
+      HDGOVF = "IMPUTATION FLAG"
+      HDDOCTOF = "IMPUTATION FLAG"
+      HDSOURCF = "IMPUTATION FLAG"
+      HDIEF = "IMPUTATION FLAG"
+      HDDEVIEF = "IMPUTATION FLAG"
+      HDSPCLEF = "IMPUTATION FLAG"
+      HDCOMMF = "IMPUTATION FLAG"
+      HDTCHF = "IMPUTATION FLAG"
+      HDACCOF = "IMPUTATION FLAG"
+      HDCOMMIF = "IMPUTATION FLAG"
+      HDAFFECF = "IMPUTATION FLAG"
+      CBORNUF = "IMPUTATION FLAG"
+      CMOVEAGF = "IMPUTATION FLAG"
+      CHISPAF = "IMPUTATION FLAG"
+      CWHITF = "IMPUTATION FLAG"
+      CBLACF = "IMPUTATION FLAG"
+      CAMINF = "IMPUTATION FLAG"
+      CASIAF = "IMPUTATION FLAG"
+      CPACF = "IMPUTATION FLAG"
+      CRACEOTF = "IMPUTATION FLAG"
+      MOMNEF1 = "IMPUTATION FLAG"
+      MOMSTAF1 = "IMPUTATION FLAG"
+      MOMLIVF1 = "IMPUTATION FLAG"
+      MOMLANF1 = "IMPUTATION FLAG"
+      MOMSPEAF1 = "IMPUTATION FLAG"
+      MOMBORF1 = "IMPUTATION FLAG"
+      MHISPAF1 = "IMPUTATION FLAG"
+      MWHITF1 = "IMPUTATION FLAG"
+      MBLACF1 = "IMPUTATION FLAG"
+      MAMINF1 = "IMPUTATION FLAG"
+      MASIAF1 = "IMPUTATION FLAG"
+      MPACF1 = "IMPUTATION FLAG"
+      MRACEOTF1 = "IMPUTATION FLAG"
+      MOMGRADF1 = "IMPUTATION FLAG"
+      MOMGRAF11 = "IMPUTATION FLAG"
+      MOMGRAF21 = "IMPUTATION FLAG"
+      MOMVOTEF1 = "IMPUTATION FLAG"
+      MOMDIPF1 = "IMPUTATION FLAG"
+      MOMWORF1 = "IMPUTATION FLAG"
+      MOMLEAVF1 = "IMPUTATION FLAG"
+      MOMHOURF1 = "IMPUTATION FLAG"
+      MOMMTHF1 = "IMPUTATION FLAG"
+      MOMLOOF1 = "IMPUTATION FLAG"
+      MOMAGNF1 = "IMPUTATION FLAG"
+      MOMEMPF1 = "IMPUTATION FLAG"
+      MOMREF1 = "IMPUTATION FLAG"
+      MOMANSAF1 = "IMPUTATION FLAG"
+      MOMENROF1 = "IMPUTATION FLAG"
+      MOMNEF2 = "IMPUTATION FLAG"
+      MOMSTAF2 = "IMPUTATION FLAG"
+      MOMLANF2 = "IMPUTATION FLAG"
+      MOMSPEAF2 = "IMPUTATION FLAG"
+      MOMBORF2 = "IMPUTATION FLAG"
+      MHISPAF2 = "IMPUTATION FLAG"
+      MWHITF2 = "IMPUTATION FLAG"
+      MBLACF2 = "IMPUTATION FLAG"
+      MAMINF2 = "IMPUTATION FLAG"
+      MASIAF2 = "IMPUTATION FLAG"
+      MPACF2 = "IMPUTATION FLAG"
+      MRACEOTF2 = "IMPUTATION FLAG"
+      MOMGRADF2 = "IMPUTATION FLAG"
+      MOMWORF2 = "IMPUTATION FLAG"
+      MOMHOURF2 = "IMPUTATION FLAG"
+      MOMMTHF2 = "IMPUTATION FLAG"
+      MOMENROF2 = "IMPUTATION FLAG"
+      DADSTAF1 = "IMPUTATION FLAG"
+      DADLIVF1 = "IMPUTATION FLAG"
+      DADLANF1 = "IMPUTATION FLAG"
+      DADSPEAF1 = "IMPUTATION FLAG"
+      DADBORF1 = "IMPUTATION FLAG"
+      DHISPAF1 = "IMPUTATION FLAG"
+      DWHITF1 = "IMPUTATION FLAG"
+      DBLACF1 = "IMPUTATION FLAG"
+      DAMINF1 = "IMPUTATION FLAG"
+      DASIAF1 = "IMPUTATION FLAG"
+      DPACF1 = "IMPUTATION FLAG"
+      DRACEOTF1 = "IMPUTATION FLAG"
+      DADGRADF1 = "IMPUTATION FLAG"
+      DADGRAF11 = "IMPUTATION FLAG"
+      DADGRAF21 = "IMPUTATION FLAG"
+      DADVOTEF1 = "IMPUTATION FLAG"
+      DADDIPF1 = "IMPUTATION FLAG"
+      DADWORF1 = "IMPUTATION FLAG"
+      DADHOURF1 = "IMPUTATION FLAG"
+      DADMTHF1 = "IMPUTATION FLAG"
+      DADLOOF1 = "IMPUTATION FLAG"
+      DADAGNF1 = "IMPUTATION FLAG"
+      DADEMPF1 = "IMPUTATION FLAG"
+      DADREF1 = "IMPUTATION FLAG"
+      DADANSAF1 = "IMPUTATION FLAG"
+      DADENROF1 = "IMPUTATION FLAG"
+      FOINTHF = "IMPUTATION FLAG"
+      HWELFTAF = "IMPUTATION FLAG"
+      HWELFSF = "IMPUTATION FLAG"
+      HWIF = "IMPUTATION FLAG"
+      HFOODSF = "IMPUTATION FLAG"
+      HMEDICAF = "IMPUTATION FLAG"
+      HCHIF = "IMPUTATION FLAG"
+      HSECF8 = "IMPUTATION FLAG"
+      H3YRMOVF = "IMPUTATION FLAG"
+      HINCMRNF = "IMPUTATION FLAG"
+      HINCM50F = "IMPUTATION FLAG"
+      HINCOMF = "IMPUTATION FLAG"
+      ;
+
+/* format
+      ALLGRADE   $ALLGRAD.
+      GRADE   $GRADE.
+      GRADEEQ   $GRADEEQ.
+      PATH   $PATH.
+      MAINRSLT   $RSLT.
+      CBORNUS   BORN.
+      DADBORN1   BORN.
+      MOMBORN1   BORN.
+      CENREG   CENREG.
+      CMOVEAGE   CMOVEAGE.
+      CDOBMM   CRCOMPMM.
+      CSPEAK   CSPEAK.
+      RESPEAK   CSPEAK.
+      DADEDUC1   DADEDU1C.
+      DADEDUC2   DADEDU2C.
+      DADTYPE1   DADTYPE.
+      DADTYPE2   DADTYPE.
+      DADEMPLD1   DEMPLD1F.
+      DADEMPLD2   DEMPLD2F.
+      DISABLTY   DISABLTY.
+      DISBLTY2   DISABLTY.
+      ENGLSPAN   ENGLSPAF.
+      FAMILY   FAMILY.
+      FAMILY07   FAMILY.
+      HOMSCFLG   FLAG.
+      FOREADTO   FOREADTO.
+      AGE2006   GENNUMF.
+      H3YRMOVE   GENNUMF.
+      HH18OVER   GENNUMF.
+      HHTOTAL   GENNUMF.
+      HHUNDR10   GENNUMF.
+      HHUNDR13   GENNUMF.
+      HHUNDR18   GENNUMF.
+      HHUNDR21   GENNUMF.
+      HHUNDR6   GENNUMF.
+      NUMSIBS   GENNUMF.
+      HDHEALTH   HDHEALTH.
+      HDAFFECT   HDSCHL.
+      HDSCHL   HDSCHL.
+      HDWEIGHT2   HDWEIGH.
+      HHDAD1   HHDADF.
+      HHDAD2   HHDADF.
+      HHMOM1   HHMOMF.
+      HHMOM2   HHMOMF.
+      HHPARN07   HHPARN.
+      HHPARN1   HHPARN1F.
+      DADGRADE1   HIGHGRAD.
+      DADGRADE2   HIGHGRAD.
+      MOMGRADE1   HIGHGRAD.
+      MOMGRADE2   HIGHGRAD.
+      HINCM50K   HINCM50K.
+      HOMEALL   HOMEALL.
+      DADWORK1   IBWORK.
+      DADWORK2   IBWORK.
+      MOMWORK1   IBWORK.
+      MOMWORK2   IBWORK.
+      ABCCBSCF   IMPF.
+      AGF1   IMPF.
+      AGF2   IMPF.
+      AGF3   IMPF.
+      AGF4   IMPF.
+      AGF5   IMPF.
+      ANIMPLAF   IMPF.
+      ANOTADLF   IMPF.
+      CAMINF   IMPF.
+      CARTOONF   IMPF.
+      CASIAF   IMPF.
+      CBLACF   IMPF.
+      CBORNUF   IMPF.
+      CDOBMF   IMPF.
+      CDOBYF   IMPF.
+      CHISPAF   IMPF.
+      CHRSTNCF   IMPF.
+      CMOVEAGF   IMPF.
+      CPACF   IMPF.
+      CPHRF   IMPF.
+      CPNEVEF   IMPF.
+      CPNNOF   IMPF.
+      CPVISIF   IMPF.
+      CRACEOTF   IMPF.
+      CSPEAF   IMPF.
+      CWHITF   IMPF.
+      DADAGF1   IMPF.
+      DADAGNF1   IMPF.
+      DADANSAF1   IMPF.
+      DADBORF1   IMPF.
+      DADDIPF1   IMPF.
+      DADEMPF1   IMPF.
+      DADENROF1   IMPF.
+      DADGRADF1   IMPF.
+      DADGRAF11   IMPF.
+      DADGRAF21   IMPF.
+      DADHOURF1   IMPF.
+      DADLANF1   IMPF.
+      DADLIVF1   IMPF.
+      DADLOOF1   IMPF.
+      DADMTHF1   IMPF.
+      DADREF1   IMPF.
+      DADSPEAF1   IMPF.
+      DADSTAF1   IMPF.
+      DADTYPF1   IMPF.
+      DADVOTEF1   IMPF.
+      DADWORF1   IMPF.
+      DAMINF1   IMPF.
+      DASIAF1   IMPF.
+      DBLACF1   IMPF.
+      DHISPAF1   IMPF.
+      DISCOVEF   IMPF.
+      DISNEYCF   IMPF.
+      DPACF1   IMPF.
+      DPCOLOF   IMPF.
+      DPCOUNF   IMPF.
+      DPFIDGEF   IMPF.
+      DPLETTEF   IMPF.
+      DPNAMF   IMPF.
+      DPPENCIF   IMPF.
+      DPRHYMF   IMPF.
+      DPSPEAF   IMPF.
+      DPSTSNF   IMPF.
+      DRACEOTF1   IMPF.
+      DWHITF1   IMPF.
+      ENROLF   IMPF.
+      FAMILYCF   IMPF.
+      FATHERMF   IMPF.
+      FOBOOKSF   IMPF.
+      FOCHLRF   IMPF.
+      FOCHREAF   IMPF.
+      FOCONCRF   IMPF.
+      FOCRAFF1   IMPF.
+      FODINNEF   IMPF.
+      FOGAMEF1   IMPF.
+      FOGROUF   IMPF.
+      FOINTHF   IMPF.
+      FOLETTF   IMPF.
+      FOLIBRAF   IMPF.
+      FOMUSEUF   IMPF.
+      FOMUSIF   IMPF.
+      FOODNEF   IMPF.
+      FOPICTF   IMPF.
+      FORDDAF   IMPF.
+      FOREADTF   IMPF.
+      FORTVPRF   IMPF.
+      FOSPORF1   IMPF.
+      FOSPRTEF   IMPF.
+      FOSTORF1   IMPF.
+      FOTLKSTF   IMPF.
+      FOWORDF   IMPF.
+      FOZOF   IMPF.
+      H3YRMOVF   IMPF.
+      HABOOKF   IMPF.
+      HALEAPPF   IMPF.
+      HAPRETNF   IMPF.
+      HASTORF   IMPF.
+      HAWORDF   IMPF.
+      HCHIF   IMPF.
+      HDACCOF   IMPF.
+      HDADF   IMPF.
+      HDAFFECF   IMPF.
+      HDAUTISF   IMPF.
+      HDBLINF   IMPF.
+      HDBRTHF3   IMPF.
+      HDBRTHF5   IMPF.
+      HDCHINF   IMPF.
+      HDCOMMF   IMPF.
+      HDCOMMIF   IMPF.
+      HDDEAFIF   IMPF.
+      HDDEVIEF   IMPF.
+      HDDISTRF   IMPF.
+      HDDOCTOF   IMPF.
+      HDGOVF   IMPF.
+      HDHEALTF   IMPF.
+      HDHOSF   IMPF.
+      HDIEF   IMPF.
+      HDIFSF   IMPF.
+      HDLEARF   IMPF.
+      HDMENREF   IMPF.
+      HDORTHF   IMPF.
+      HDOTHEF   IMPF.
+      HDPDF   IMPF.
+      HDPRMTF4   IMPF.
+      HDSCHF   IMPF.
+      HDSOURCF   IMPF.
+      HDSPCLEF   IMPF.
+      HDSPEECF   IMPF.
+      HDTCHF   IMPF.
+      HDWEIGHF   IMPF.
+      HDWEIGHF2   IMPF.
+      HFOODSF   IMPF.
+      HINCM50F   IMPF.
+      HINCMRNF   IMPF.
+      HINCOMF   IMPF.
+      HISTCHAF   IMPF.
+      HMEDICAF   IMPF.
+      HOMESCHF   IMPF.
+      HSECF8   IMPF.
+      HWELFSF   IMPF.
+      HWELFTAF   IMPF.
+      HWIF   IMPF.
+      KPENROLF   IMPF.
+      KPSTARF   IMPF.
+      LEARNCF   IMPF.
+      MAMINF1   IMPF.
+      MAMINF2   IMPF.
+      MASIAF1   IMPF.
+      MASIAF2   IMPF.
+      MBLACF1   IMPF.
+      MBLACF2   IMPF.
+      MHISPAF1   IMPF.
+      MHISPAF2   IMPF.
+      MOMAGF1   IMPF.
+      MOMAGNF1   IMPF.
+      MOMANSAF1   IMPF.
+      MOMBORF1   IMPF.
+      MOMBORF2   IMPF.
+      MOMDIPF1   IMPF.
+      MOMEMPF1   IMPF.
+      MOMENROF1   IMPF.
+      MOMENROF2   IMPF.
+      MOMGRADF1   IMPF.
+      MOMGRADF2   IMPF.
+      MOMGRAF11   IMPF.
+      MOMGRAF21   IMPF.
+      MOMHOURF1   IMPF.
+      MOMHOURF2   IMPF.
+      MOMLANF1   IMPF.
+      MOMLANF2   IMPF.
+      MOMLEAVF1   IMPF.
+      MOMLIVF1   IMPF.
+      MOMLOOF1   IMPF.
+      MOMMTHF1   IMPF.
+      MOMMTHF2   IMPF.
+      MOMNEF1   IMPF.
+      MOMNEF2   IMPF.
+      MOMREF1   IMPF.
+      MOMSPEAF1   IMPF.
+      MOMSPEAF2   IMPF.
+      MOMSTAF1   IMPF.
+      MOMSTAF2   IMPF.
+      MOMTYPF1   IMPF.
+      MOMTYPF2   IMPF.
+      MOMVOTEF1   IMPF.
+      MOMWORF1   IMPF.
+      MOMWORF2   IMPF.
+      MOTHERFF   IMPF.
+      MPACF1   IMPF.
+      MPACF2   IMPF.
+      MRACEOTF1   IMPF.
+      MRACEOTF2   IMPF.
+      MTVVF1   IMPF.
+      MWHITF1   IMPF.
+      MWHITF2   IMPF.
+      NEWSNEF   IMPF.
+      NICKELOF   IMPF.
+      NOGGIF   IMPF.
+      PARREAF   IMPF.
+      PBSSPRF   IMPF.
+      PCEVRHF   IMPF.
+      RELATF1   IMPF.
+      RELATF2   IMPF.
+      RELATF3   IMPF.
+      RELATF6   IMPF.
+      RESPAGF   IMPF.
+      RESPEAF   IMPF.
+      RPALPHF   IMPF.
+      RPDISCF   IMPF.
+      RPNUMF   IMPF.
+      RPPENCIF   IMPF.
+      RPREAF   IMPF.
+      RPSHARF   IMPF.
+      SEDOWELF   IMPF.
+      SEENJOF   IMPF.
+      SISBRF   IMPF.
+      SOMEONEF   IMPF.
+      SPNLNGCF   IMPF.
+      SPORTSCF   IMPF.
+      TVCHMOSF   IMPF.
+      TVHRWKDF   IMPF.
+      TVHRWKNF   IMPF.
+      TVLANF   IMPF.
+      TVOTHEF   IMPF.
+      TVWKDYNF   IMPF.
+      TVWKNDNF   IMPF.
+      VIDNOTF   IMPF.
+      HINCMRNG   INCOME.
+      HINCOME   INCOMRNG.
+      LANGUAGE07   LANGUAGE.
+      MOMEMPLD1   MEMPLD1F.
+      MOMEMPLD2   MEMPLD2F.
+      DADBORN2   MOMBORN.
+      MOMBORN2   MOMBORN.
+      MOMEDUC1   MOMEDU1C.
+      MOMEDUC2   MOMEDU2C.
+      MOMFTFY1   MOMFTF1Y.
+      MOMFTFY2   MOMFTF2Y.
+      DADSPEAK1   MOMSPEAK.
+      DADSPEAK2   MOMSPEAK.
+      MOMSPEAK1   MOMSPEAK.
+      MOMSPEAK2   MOMSPEAK.
+      DADSTAT1   MOMSTAT.
+      DADSTAT2   MOMSTAT.
+      MOMSTAT1   MOMSTAT.
+      MOMSTAT2   MOMSTAT.
+      MOMTYPE1   MOMTYPE.
+      MOMTYPE2   MOMTYPE.
+      PARGRADE07   PARGRADE.
+      RELATN1   PARRELN.
+      RELATN2   PARRELN.
+      RELATN3   PARRELN.
+      RELATN4   PARRELN.
+      RELATN5   PARRELN.
+      RELATN6   PARRELN.
+      RESRELN   PARRELN.
+      DADGRAD11   PGRAD1_.
+      DADGRAD12   PGRAD1_.
+      MOMGRAD11   PGRAD1_.
+      MOMGRAD12   PGRAD1_.
+      DADGRAD21   PGRAD2_.
+      DADGRAD22   PGRAD2_.
+      MOMGRAD21   PGRAD2_.
+      MOMGRAD22   PGRAD2_.
+      RACEETH2   RACEETH.
+      RACEETHN   RACEETHN.
+      HDACCOM   SATISSC.
+      HDCOMMIT   SATISSC.
+      HDCOMMU   SATISSC.
+      HDTCHR   SATISSC.
+      SEENJOY   SEAGREE.
+      RESPSEX   SEX.
+      SEX   SEX.
+      SEX1   SEX.
+      SEX2   SEX.
+      SEX3   SEX.
+      SEX4   SEX.
+      SEX5   SEX.
+      SEX6   SEX.
+      RSTRATUM   STRATUM.
+      KPENROLL   TE_112F.
+      PARREAD   TE_130F.
+      RPALPHA   TE_133F.
+      RPDISCP   TE_133F.
+      RPNUMB   TE_133F.
+      RPPENCIL   TE_133F.
+      RPREAD   TE_133F.
+      RPSHARE   TE_133F.
+      TVHRWKDY   TE_160F.
+      TVHRWKND   TE_161F.
+      KPSTART   TE_183F.
+      DADLANG1   TE_197F.
+      DADLANG2   TE_197F.
+      MOMLANG1   TE_197F.
+      MOMLANG2   TE_197F.
+      DPSPEAK   TE_60F.
+      DPCOLOR   TE_61F.
+      DPCOUNT   TE_62F.
+      DPFIDGET   TE_63F.
+      DPLETTER   TE_64F.
+      DPPENCIL   TE_65F.
+      FODINNER   TE_75F.
+      FOCHREAD   TE_76F.
+      FOLETTR   TE_76F.
+      FOPICTR   TE_76F.
+      FOTLKSTR   TE_76F.
+      FOCHLRD   TE_78F.
+      HAWORDS   TE_84F.
+      TVCHMOST   TVCHMOSF.
+      ABCCBSCW   YESNO.
+      ANIMPLAN   YESNO.
+      ANOTADLT   YESNO.
+      CAMIND   YESNO.
+      CARTOONS   YESNO.
+      CASIAN   YESNO.
+      CBLACK   YESNO.
+      CHISPAN   YESNO.
+      CHRSTNCH   YESNO.
+      CPACI   YESNO.
+      CPNEVER   YESNO.
+      CPNNOW   YESNO.
+      CRACEOTH   YESNO.
+      CWHITE   YESNO.
+      DADAGN1   YESNO.
+      DADAGN2   YESNO.
+      DADANSAD1   YESNO.
+      DADANSAD2   YESNO.
+      DADDIPL1   YESNO.
+      DADDIPL2   YESNO.
+      DADEMPL1   YESNO.
+      DADEMPL2   YESNO.
+      DADENROL1   YESNO.
+      DADENROL2   YESNO.
+      DADLEAVE1   YESNO.
+      DADLEAVE2   YESNO.
+      DADLIVW1   YESNO.
+      DADLIVW2   YESNO.
+      DADLOOK1   YESNO.
+      DADLOOK2   YESNO.
+      DADREL1   YESNO.
+      DADREL2   YESNO.
+      DADVOTEC1   YESNO.
+      DADVOTEC2   YESNO.
+      DAMIND1   YESNO.
+      DAMIND2   YESNO.
+      DASIAN1   YESNO.
+      DASIAN2   YESNO.
+      DBLACK1   YESNO.
+      DBLACK2   YESNO.
+      DHISPAN1   YESNO.
+      DHISPAN2   YESNO.
+      DISCOVER   YESNO.
+      DISNEYCH   YESNO.
+      DPACI1   YESNO.
+      DPACI2   YESNO.
+      DPNAME   YESNO.
+      DPRHYME   YESNO.
+      DPSTSND   YESNO.
+      DRACEOTH1   YESNO.
+      DRACEOTH2   YESNO.
+      DWHITE1   YESNO.
+      DWHITE2   YESNO.
+      ENROLL   YESNO.
+      FAMILYCH   YESNO.
+      FATHERMG   YESNO.
+      FOBOOKST   YESNO.
+      FOCONCRT   YESNO.
+      FOCRAFT1   YESNO.
+      FOGAMES1   YESNO.
+      FOGROUP   YESNO.
+      FOINTHM   YESNO.
+      FOLIBRAR   YESNO.
+      FOMUSEUM   YESNO.
+      FOMUSIC   YESNO.
+      FOODNET   YESNO.
+      FORTVPRG   YESNO.
+      FOSPORT1   YESNO.
+      FOSPRTEV   YESNO.
+      FOSTORY1   YESNO.
+      FOWORDS   YESNO.
+      FOZOO   YESNO.
+      HALEAPPD   YESNO.
+      HAPRETND   YESNO.
+      HASTORY   YESNO.
+      HCHIP   YESNO.
+      HDADD   YESNO.
+      HDAUTISM   YESNO.
+      HDBLIND   YESNO.
+      HDBRTHW3   YESNO.
+      HDBRTHW5   YESNO.
+      HDCHINS   YESNO.
+      HDDEAFIM   YESNO.
+      HDDEVIEP   YESNO.
+      HDDISTRB   YESNO.
+      HDDOCTOR   YESNO.
+      HDGOVT   YESNO.
+      HDIEP   YESNO.
+      HDIFSP   YESNO.
+      HDLEARN   YESNO.
+      HDMENRET   YESNO.
+      HDORTHO   YESNO.
+      HDOTHER   YESNO.
+      HDPDD   YESNO.
+      HDPRMTR4   YESNO.
+      HDSOURCE   YESNO.
+      HDSPCLED   YESNO.
+      HDSPEECH   YESNO.
+      HDWEIGHT   YESNO.
+      HFOODST   YESNO.
+      HISTCHAN   YESNO.
+      HMEDICAD   YESNO.
+      HOMESCHL   YESNO.
+      HSECN8   YESNO.
+      HWELFST   YESNO.
+      HWELFTAN   YESNO.
+      HWIC   YESNO.
+      LEARNCH   YESNO.
+      MAMIND1   YESNO.
+      MAMIND2   YESNO.
+      MASIAN1   YESNO.
+      MASIAN2   YESNO.
+      MBLACK1   YESNO.
+      MBLACK2   YESNO.
+      MHISPAN1   YESNO.
+      MHISPAN2   YESNO.
+      MOMAGN1   YESNO.
+      MOMAGN2   YESNO.
+      MOMANSAD1   YESNO.
+      MOMANSAD2   YESNO.
+      MOMDIPL1   YESNO.
+      MOMDIPL2   YESNO.
+      MOMEMPL1   YESNO.
+      MOMEMPL2   YESNO.
+      MOMENROL1   YESNO.
+      MOMENROL2   YESNO.
+      MOMLEAVE1   YESNO.
+      MOMLEAVE2   YESNO.
+      MOMLIVW1   YESNO.
+      MOMLIVW2   YESNO.
+      MOMLOOK1   YESNO.
+      MOMLOOK2   YESNO.
+      MOMREL1   YESNO.
+      MOMREL2   YESNO.
+      MOMVOTEC1   YESNO.
+      MOMVOTEC2   YESNO.
+      MOTHERFG   YESNO.
+      MPACI1   YESNO.
+      MPACI2   YESNO.
+      MRACEOTH1   YESNO.
+      MRACEOTH2   YESNO.
+      MTVVH1   YESNO.
+      MWHITE1   YESNO.
+      MWHITE2   YESNO.
+      NEWSNET   YESNO.
+      NICKELOD   YESNO.
+      NOGGIN   YESNO.
+      PBSSPRT   YESNO.
+      PCEVRHD   YESNO.
+      SISBRO   YESNO.
+      SOMEONEL   YESNO.
+      SPNLNGCH   YESNO.
+      SPORTSCH   YESNO.
+      TVLAND   YESNO.
+      TVOTHER   YESNO.
+      VIDNOTV   YESNO.
+      ZIP18PO2   ZIP18PO.
+      ZIPBLHI2   ZIPBLHI.
+      ZIPLOCL   ZIPLOCL.
+      ;
+ */
+
+run;
+
+/*
+proc contents;
+run;
+
+proc freq;
+table 
+      MAINRSLT   
+      PATH   
+      ENGLSPAN   
+      AGE2006   
+      SEX   
+      RESPSEX   
+      RESRELN   
+      MOMTYPE1   
+      MOMTYPE2   
+      DADTYPE1   
+      DADTYPE2   
+      SEX1   
+      RELATN1   
+      SEX2   
+      RELATN2   
+      SEX3   
+      RELATN3   
+      SEX4   
+      RELATN4   
+      SEX5   
+      RELATN5   
+      SEX6   
+      RELATN6   
+      CDOBMM   
+      CSPEAK   
+      RESPEAK   
+      ENROLL   
+      HOMESCHL   
+      HOMEALL   
+      HOMSCFLG   
+      GRADE   
+      GRADEEQ   
+      CPNNOW   
+      CPNEVER   
+      PCEVRHD   
+      DPCOLOR   
+      DPLETTER   
+      DPCOUNT   
+      DPNAME   
+      DPRHYME   
+      DPSTSND   
+      DPPENCIL   
+      DPFIDGET   
+      DPSPEAK   
+      KPSTART   
+      KPENROLL   
+      SEENJOY   
+      FOREADTO   
+      MOTHERFG   
+      FATHERMG   
+      SISBRO   
+      ANOTADLT   
+      SOMEONEL   
+      FOPICTR   
+      FOLETTR   
+      FOCHREAD   
+      FOTLKSTR   
+      HASTORY   
+      HAWORDS   
+      HAPRETND   
+      FOCHLRD   
+      HALEAPPD   
+      FOSTORY1   
+      FOWORDS   
+      FOMUSIC   
+      FOCRAFT1   
+      FOSPORT1   
+      FOGAMES1   
+      FODINNER   
+      FOLIBRAR   
+      FOBOOKST   
+      FOCONCRT   
+      FOMUSEUM   
+      FOZOO   
+      FOGROUP   
+      FOSPRTEV   
+      TVHRWKDY   
+      TVHRWKND   
+      ABCCBSCW   
+      ANIMPLAN   
+      CARTOONS   
+      CHRSTNCH   
+      DISCOVER   
+      DISNEYCH   
+      SPORTSCH   
+      FAMILYCH   
+      MTVVH1   
+      NICKELOD   
+      NEWSNET   
+      NOGGIN   
+      PBSSPRT   
+      SPNLNGCH   
+      LEARNCH   
+      TVLAND   
+      HISTCHAN   
+      FOODNET   
+      TVOTHER   
+      VIDNOTV   
+      TVCHMOST   
+      FORTVPRG   
+      PARREAD   
+      RPALPHA   
+      RPSHARE   
+      RPREAD   
+      RPNUMB   
+      RPPENCIL   
+      RPDISCP   
+      HDBRTHW5   
+      HDBRTHW3   
+      HDPRMTR4   
+      HDIFSP   
+      HDHEALTH   
+      HDCHINS   
+      HDWEIGHT   
+      HDWEIGHT2   
+      HDLEARN   
+      HDMENRET   
+      HDSPEECH   
+      HDDISTRB   
+      HDDEAFIM   
+      HDBLIND   
+      HDORTHO   
+      HDAUTISM   
+      HDADD   
+      HDPDD   
+      HDOTHER   
+      HDSCHL   
+      HDGOVT   
+      HDDOCTOR   
+      HDSOURCE   
+      HDIEP   
+      HDDEVIEP   
+      HDSPCLED   
+      HDCOMMU   
+      HDTCHR   
+      HDACCOM   
+      HDCOMMIT   
+      HDAFFECT   
+      CBORNUS   
+      CMOVEAGE   
+      CHISPAN   
+      CWHITE   
+      CBLACK   
+      CAMIND   
+      CASIAN   
+      CPACI   
+      CRACEOTH   
+      MOMSTAT1   
+      MOMLIVW1   
+      MOMLANG1   
+      MOMSPEAK1   
+      MOMBORN1   
+      MHISPAN1   
+      MWHITE1   
+      MBLACK1   
+      MAMIND1   
+      MASIAN1   
+      MPACI1   
+      MRACEOTH1   
+      MOMGRADE1   
+      MOMGRAD11   
+      MOMGRAD21   
+      MOMVOTEC1   
+      MOMDIPL1   
+      MOMWORK1   
+      MOMLEAVE1   
+      MOMLOOK1   
+      MOMAGN1   
+      MOMEMPL1   
+      MOMREL1   
+      MOMANSAD1   
+      MOMENROL1   
+      MOMSTAT2   
+      MOMLIVW2   
+      MOMLANG2   
+      MOMSPEAK2   
+      MOMBORN2   
+      MHISPAN2   
+      MWHITE2   
+      MBLACK2   
+      MAMIND2   
+      MASIAN2   
+      MPACI2   
+      MRACEOTH2   
+      MOMGRADE2   
+      MOMGRAD12   
+      MOMGRAD22   
+      MOMVOTEC2   
+      MOMDIPL2   
+      MOMWORK2   
+      MOMLEAVE2   
+      MOMLOOK2   
+      MOMAGN2   
+      MOMEMPL2   
+      MOMREL2   
+      MOMANSAD2   
+      MOMENROL2   
+      DADSTAT1   
+      DADLIVW1   
+      DADLANG1   
+      DADSPEAK1   
+      DADBORN1   
+      DHISPAN1   
+      DWHITE1   
+      DBLACK1   
+      DAMIND1   
+      DASIAN1   
+      DPACI1   
+      DRACEOTH1   
+      DADGRADE1   
+      DADGRAD11   
+      DADGRAD21   
+      DADVOTEC1   
+      DADDIPL1   
+      DADWORK1   
+      DADLEAVE1   
+      DADLOOK1   
+      DADAGN1   
+      DADEMPL1   
+      DADREL1   
+      DADANSAD1   
+      DADENROL1   
+      DADSTAT2   
+      DADLIVW2   
+      DADLANG2   
+      DADSPEAK2   
+      DADBORN2   
+      DHISPAN2   
+      DWHITE2   
+      DBLACK2   
+      DAMIND2   
+      DASIAN2   
+      DPACI2   
+      DRACEOTH2   
+      DADGRADE2   
+      DADGRAD12   
+      DADGRAD22   
+      DADVOTEC2   
+      DADDIPL2   
+      DADWORK2   
+      DADLEAVE2   
+      DADLOOK2   
+      DADAGN2   
+      DADEMPL2   
+      DADREL2   
+      DADANSAD2   
+      DADENROL2   
+      FOINTHM   
+      HWELFTAN   
+      HWELFST   
+      HWIC   
+      HFOODST   
+      HMEDICAD   
+      HCHIP   
+      HSECN8   
+      H3YRMOVE   
+      HINCMRNG   
+      HINCM50K   
+      HINCOME   
+      ALLGRADE   
+      CENREG   
+      DADEDUC1   
+      DADEMPLD1   
+      DADEDUC2   
+      DADEMPLD2   
+      DISABLTY   
+      DISBLTY2   
+      FAMILY   
+      FAMILY07   
+      HH18OVER   
+      HHDAD1   
+      HHDAD2   
+      HHMOM1   
+      HHMOM2   
+      HHPARN1   
+      HHPARN07   
+      HHTOTAL   
+      HHUNDR6   
+      HHUNDR10   
+      HHUNDR13   
+      HHUNDR18   
+      HHUNDR21   
+      LANGUAGE07   
+      MOMEDUC1   
+      MOMEMPLD1   
+      MOMFTFY1   
+      MOMEDUC2   
+      MOMEMPLD2   
+      MOMFTFY2   
+      NUMSIBS   
+      PARGRADE07   
+      RACEETHN   
+      RACEETH2   
+      ZIP18PO2   
+      ZIPBLHI2   
+      ZIPLOCL   
+      RSTRATUM   
+      RESPAGF   
+      MOMAGF1   
+      MOMTYPF1   
+      MOMTYPF2   
+      DADAGF1   
+      DADTYPF1   
+      AGF1   
+      RELATF1   
+      AGF2   
+      RELATF2   
+      AGF3   
+      RELATF3   
+      AGF4   
+      AGF5   
+      RELATF6   
+      CDOBMF   
+      CDOBYF   
+      CSPEAF   
+      RESPEAF   
+      ENROLF   
+      HOMESCHF   
+      CPNNOF   
+      CPNEVEF   
+      CPHRF   
+      CPVISIF   
+      PCEVRHF   
+      DPCOLOF   
+      DPLETTEF   
+      DPCOUNF   
+      DPNAMF   
+      DPRHYMF   
+      DPSTSNF   
+      DPPENCIF   
+      DPFIDGEF   
+      DPSPEAF   
+      KPSTARF   
+      KPENROLF   
+      SEENJOF   
+      SEDOWELF   
+      HABOOKF   
+      FOREADTF   
+      MOTHERFF   
+      FATHERMF   
+      SISBRF   
+      ANOTADLF   
+      SOMEONEF   
+      FORDDAF   
+      FOPICTF   
+      FOLETTF   
+      FOCHREAF   
+      FOTLKSTF   
+      HASTORF   
+      HAWORDF   
+      HAPRETNF   
+      FOCHLRF   
+      HALEAPPF   
+      FOSTORF1   
+      FOWORDF   
+      FOMUSIF   
+      FOCRAFF1   
+      FOSPORF1   
+      FOGAMEF1   
+      FODINNEF   
+      FOLIBRAF   
+      FOBOOKSF   
+      FOCONCRF   
+      FOMUSEUF   
+      FOZOF   
+      FOGROUF   
+      FOSPRTEF   
+      TVHRWKDF   
+      TVWKDYNF   
+      TVHRWKNF   
+      TVWKNDNF   
+      ABCCBSCF   
+      ANIMPLAF   
+      CARTOONF   
+      CHRSTNCF   
+      DISCOVEF   
+      DISNEYCF   
+      SPORTSCF   
+      FAMILYCF   
+      MTVVF1   
+      NICKELOF   
+      NEWSNEF   
+      NOGGIF   
+      PBSSPRF   
+      SPNLNGCF   
+      LEARNCF   
+      TVLANF   
+      HISTCHAF   
+      FOODNEF   
+      TVOTHEF   
+      VIDNOTF   
+      TVCHMOSF   
+      FORTVPRF   
+      PARREAF   
+      RPALPHF   
+      RPSHARF   
+      RPREAF   
+      RPNUMF   
+      RPPENCIF   
+      RPDISCF   
+      HDBRTHF5   
+      HDBRTHF3   
+      HDPRMTF4   
+      HDHOSF   
+      HDIFSF   
+      HDHEALTF   
+      HDCHINF   
+      HDWEIGHF   
+      HDWEIGHF2   
+      HDLEARF   
+      HDMENREF   
+      HDSPEECF   
+      HDDISTRF   
+      HDDEAFIF   
+      HDBLINF   
+      HDORTHF   
+      HDAUTISF   
+      HDADF   
+      HDPDF   
+      HDOTHEF   
+      HDSCHF   
+      HDGOVF   
+      HDDOCTOF   
+      HDSOURCF   
+      HDIEF   
+      HDDEVIEF   
+      HDSPCLEF   
+      HDCOMMF   
+      HDTCHF   
+      HDACCOF   
+      HDCOMMIF   
+      HDAFFECF   
+      CBORNUF   
+      CMOVEAGF   
+      CHISPAF   
+      CWHITF   
+      CBLACF   
+      CAMINF   
+      CASIAF   
+      CPACF   
+      CRACEOTF   
+      MOMNEF1   
+      MOMSTAF1   
+      MOMLIVF1   
+      MOMLANF1   
+      MOMSPEAF1   
+      MOMBORF1   
+      MHISPAF1   
+      MWHITF1   
+      MBLACF1   
+      MAMINF1   
+      MASIAF1   
+      MPACF1   
+      MRACEOTF1   
+      MOMGRADF1   
+      MOMGRAF11   
+      MOMGRAF21   
+      MOMVOTEF1   
+      MOMDIPF1   
+      MOMWORF1   
+      MOMLEAVF1   
+      MOMHOURF1   
+      MOMMTHF1   
+      MOMLOOF1   
+      MOMAGNF1   
+      MOMEMPF1   
+      MOMREF1   
+      MOMANSAF1   
+      MOMENROF1   
+      MOMNEF2   
+      MOMSTAF2   
+      MOMLANF2   
+      MOMSPEAF2   
+      MOMBORF2   
+      MHISPAF2   
+      MWHITF2   
+      MBLACF2   
+      MAMINF2   
+      MASIAF2   
+      MPACF2   
+      MRACEOTF2   
+      MOMGRADF2   
+      MOMWORF2   
+      MOMHOURF2   
+      MOMMTHF2   
+      MOMENROF2   
+      DADSTAF1   
+      DADLIVF1   
+      DADLANF1   
+      DADSPEAF1   
+      DADBORF1   
+      DHISPAF1   
+      DWHITF1   
+      DBLACF1   
+      DAMINF1   
+      DASIAF1   
+      DPACF1   
+      DRACEOTF1   
+      DADGRADF1   
+      DADGRAF11   
+      DADGRAF21   
+      DADVOTEF1   
+      DADDIPF1   
+      DADWORF1   
+      DADHOURF1   
+      DADMTHF1   
+      DADLOOF1   
+      DADAGNF1   
+      DADEMPF1   
+      DADREF1   
+      DADANSAF1   
+      DADENROF1   
+      FOINTHF   
+      HWELFTAF   
+      HWELFSF   
+      HWIF   
+      HFOODSF   
+      HMEDICAF   
+      HCHIF   
+      HSECF8   
+      H3YRMOVF   
+      HINCMRNF   
+      HINCM50F   
+      HINCOMF   
+;
+run;
+
+proc means;
+var 
+      BASMID   
+      BASEID   
+      RESPAGE   
+      MOMAGE1   
+      MOMAGE2   
+      DADAGE1   
+      DADAGE2   
+      AGE1   
+      AGE2   
+      AGE3   
+      AGE4   
+      AGE5   
+      AGE6   
+      CDOBYY   
+      HOMSCHR   
+      CPHRS   
+      CPVISIT   
+      SEDOWELL   
+      HABOOKS   
+      FORDDAY   
+      TVWKDYNU   
+      TVWKNDNU   
+      HDHOSP   
+      MOMNEW1   
+      MOMHOURS1   
+      MOMMTHS1   
+      MOMNEW2   
+      MOMHOURS2   
+      MOMMTHS2   
+      DADHOURS1   
+      DADMTHS1   
+      DADHOURS2   
+      DADMTHS2   
+      TVHOURS   
+      FRWT   
+      FRWT1   
+      FRWT2   
+      FRWT3   
+      FRWT4   
+      FRWT5   
+      FRWT6   
+      FRWT7   
+      FRWT8   
+      FRWT9   
+      FRWT10   
+      FRWT11   
+      FRWT12   
+      FRWT13   
+      FRWT14   
+      FRWT15   
+      FRWT16   
+      FRWT17   
+      FRWT18   
+      FRWT19   
+      FRWT20   
+      FRWT21   
+      FRWT22   
+      FRWT23   
+      FRWT24   
+      FRWT25   
+      FRWT26   
+      FRWT27   
+      FRWT28   
+      FRWT29   
+      FRWT30   
+      FRWT31   
+      FRWT32   
+      FRWT33   
+      FRWT34   
+      FRWT35   
+      FRWT36   
+      FRWT37   
+      FRWT38   
+      FRWT39   
+      FRWT40   
+      FRWT41   
+      FRWT42   
+      FRWT43   
+      FRWT44   
+      FRWT45   
+      FRWT46   
+      FRWT47   
+      FRWT48   
+      FRWT49   
+      FRWT50   
+      FRWT51   
+      FRWT52   
+      FRWT53   
+      FRWT54   
+      FRWT55   
+      FRWT56   
+      FRWT57   
+      FRWT58   
+      FRWT59   
+      FRWT60   
+      FRWT61   
+      FRWT62   
+      FRWT63   
+      FRWT64   
+      FRWT65   
+      FRWT66   
+      FRWT67   
+      FRWT68   
+      FRWT69   
+      FRWT70   
+      FRWT71   
+      FRWT72   
+      FRWT73   
+      FRWT74   
+      FRWT75   
+      FRWT76   
+      FRWT77   
+      FRWT78   
+      FRWT79   
+      FRWT80   
+      RPSU   
+;
+run;
+ */
